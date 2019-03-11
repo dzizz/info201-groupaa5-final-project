@@ -10,9 +10,11 @@ main_ui <- fluidPage(
     ),
     mainPanel(
       tabsetPanel(type = "tabs",
+                  tabPanel("Summary"),
                   tabPanel("Table"),
                   tabPanel("1"),
-                  tabPanel("2"),
+                  tabPanel("Kayla"
+                           ),
                   tabPanel("3"),
                   tabPanel("4")
       )
