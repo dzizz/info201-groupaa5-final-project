@@ -12,7 +12,7 @@ main_ui <- fluidPage(
                   tabPanel("Table"),
                   tabPanel("1"),
                   tabPanel("2"),
-                  tabPanel("3"),
+                  tabPanel("Dillon"),
                   tabPanel("4")
       )
     )
