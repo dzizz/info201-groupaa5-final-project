@@ -13,12 +13,11 @@ main_server <- function(input, output) {
     # Map visualization 
     ggplot(data = plot_data) +
       geom_polygon(
-        mapping = aes(x = long, y = lat, group = group, fill = factor(Year)),
+        mapping = aes(x = long, y = lat, group = group, fill = hdi_data),
         color = "white",
         size = .1
       ) +
       coord_map() +
-      scale_fill_brewer(palette = "OrRd") +
       labs(
         title = "HDI Levels",
         fill = "Values"
@@ -33,12 +32,11 @@ main_server <- function(input, output) {
     # Map visualization 
     ggplot(data = plot_data) +
       geom_polygon(
-        mapping = aes(x = long, y = lat, group = group, fill = factor(Year)),
+        mapping = aes(x = long, y = lat, group = group, fill = co2_data),
         color = "white",
         size = .1
       ) +
       coord_map() +
-      scale_fill_brewer(palette = "Blues") +
       labs(
         title = "CO2 Levels",
         fill = "Values"

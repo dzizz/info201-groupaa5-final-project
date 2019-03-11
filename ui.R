@@ -6,6 +6,15 @@ main_ui <- fluidPage(
   titlePanel("Title"),
   sidebarLayout(
     sidebarPanel(
+      
+      # drop down for years
+      selectInput(
+        inputId = "years",
+        label = "Select Year:",
+        choices = c(years, "Select year..."),
+        selected = "Select year..."
+      )
+      
     ),
     mainPanel(
       tabsetPanel(type = "tabs",

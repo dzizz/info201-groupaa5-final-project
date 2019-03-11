@@ -18,6 +18,11 @@ library("ggplot2")
       rename(rank_2017 = HDI.Rank..2017.)
     names(co2_data)[3:11] <- gsub("X", "co2_", names(co2_data)[3:11]) #change colnames
     
+    # range of years
+    colnames <- colnames(hdi_data)
+    colnames <- colnames[3:27]
+    years <- as.character(substr(colnames, 5, nchar(colnames)))
+    
 # DILLON
     
 # KAYLA
@@ -50,11 +55,11 @@ library("ggplot2")
     world <- map_data("world")
     world_HDI <- world %>% 
       rename(Country = region) %>% 
-      left_join(plot_HDI_data)
+      full_join(plot_HDI_data, by = "Country")
     
     world_CO2 <- world %>% 
       rename(Country = region) %>% 
-      left_join(plot_CO2_data)
+      full_join(plot_CO2_data, by = "Country")
 
 # ARAMIS
     
