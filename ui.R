@@ -1,6 +1,5 @@
 #Import the needed libraries
 library("shiny")
-source("server.R")
 
 #Create the main user interface using a fluidPage
 main_ui <- fluidPage(
@@ -13,8 +12,7 @@ main_ui <- fluidPage(
                   tabPanel("Summary"),
                   tabPanel("Table"),
                   tabPanel("1"),
-                  tabPanel("Kayla"
-                           ),
+                  tabPanel("Kayla", plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")),
                   tabPanel("3"),
                   tabPanel("4")
       )
