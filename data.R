@@ -14,17 +14,14 @@ library("tidyr")
     co2_data <- co2_data[, colSums(is.na(co2_data)) < nrow(co2_data)] %>% #delete na values
       rename(rank_2017 = HDI.Rank..2017.)
     names(co2_data)[3:11] <- gsub("X", "co2_", names(co2_data)[3:11]) #change colnames
-
-# JULIA
-
-    
-# KAYLA
     
     
 # DILLON
     
+# KAYLA
 
 # ARAMIS
     
+# JULIA
     
     
