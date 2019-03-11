@@ -22,8 +22,8 @@ library("tidyr")
 # ARAMIS
     
 # JULIA
-    # Data frames and variables to help answer critical question 4 (Julia's question) about the 
-    # percentage of countries whose HDI increased or decreased while their CO2 emissions levels decreased
+# Data frames and variables to help answer critical question 4 about the percentage of 
+# countries whose HDI increased or decreased while their CO2 emissions levels decreased
     
     # Data frame of all countries change in HDI from 1990 to 2014
     
