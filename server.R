@@ -50,8 +50,8 @@ main_server <- function(input, output) {
   #scale_y_continuous is used to draw the second axis on the righthand side demonstrating HDI values
   output$dzizza_plot <- renderPlot({
     ggplot() +
-      geom_col(mapping = aes(x = Country, y = HDI_2014, fill = "a3e61"), position = "dodge2", data = dzizza_hdi) +
+      geom_col(mapping = aes(x = Country, y = HDI_2014, fill = "a3e61"), position_dodge(width = NULL, preserve = c("total")), data = dzizza_hdi) +
       scale_y_continuous(sec.axis = sec_axis(~. / max(dzizza_co2$co2_2014, na.rm=TRUE), name = paste("HDI in", ""))) +
-      geom_col(mapping = aes(x = Country, y = co2_2014, fill = "6c0dc4"), position = "dodge2", data = dzizza_co2)
+      geom_col(mapping = aes(x = Country, y = co2_2014, fill = "6c0dc4"), position_dodge(width = NULL, preserve = c("total")), data = dzizza_co2)
   })
 }
