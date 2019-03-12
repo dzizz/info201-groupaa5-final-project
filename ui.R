@@ -18,7 +18,7 @@ main_ui <- fluidPage(
                            )
                          )
                        )),
-              tabPanel("1",
+              tabPanel("Rico",
                        sidebarLayout(
                          sidebarPanel(
                            
@@ -31,7 +31,7 @@ main_ui <- fluidPage(
                            )
                          )
                        )),
-              tabPanel("2",
+              tabPanel("Dillon",
                        sidebarLayout(
                          sidebarPanel(
                            
@@ -43,7 +43,7 @@ main_ui <- fluidPage(
                            )
                          )
                        )),
-              tabPanel("3",
+              tabPanel("Kayla",
                        sidebarLayout(
                          sidebarPanel(
                            selectInput(
@@ -56,12 +56,13 @@ main_ui <- fluidPage(
                          mainPanel(
                            tabsetPanel(type = "tabs",
                                        tabPanel("Summary"),
-                                       tabPanel("Plot")
-                                                
+                                       tabPanel("Plot",
+                                                plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")
+                                       )
                            )
                          )
                        )),
-              tabPanel("4",
+              tabPanel("Julia",
                        sidebarLayout(
                          sidebarPanel(
                            
