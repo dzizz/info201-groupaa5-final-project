@@ -15,8 +15,9 @@ library("ggplot2")
     names(hdi_data)[3:30] <- gsub("X", "HDI_", names(hdi_data)[3:30]) #change colnames
     
     co2_data <- co2_data[, colSums(is.na(co2_data)) < nrow(co2_data)] %>% #delete na values
-      rename(rank_2017 = HDI.Rank..2017.)
+      rename(rank_2017 = HDI.Rank..2017.) %>% mutate(rank_2017 = as.numeric(rank_2017))
     names(co2_data)[3:11] <- gsub("X", "co2_", names(co2_data)[3:11]) #change colnames
+    
     
     # range of years
     colnames <- colnames(hdi_data)
@@ -24,10 +25,15 @@ library("ggplot2")
     years <- as.character(substr(colnames, 5, nchar(colnames)))
     
 # DILLON
-    #Produce data frames of countries to analyze from both data sets, consisting of the top and bottom of the HDI rankings and a few select additional countries
-    dzizza_co2 <- co2_data %>% mutate(rank_2017 = as.numeric(rank_2017)) %>% filter(rank_2017 <= 5 | rank_2017 == 13 | rank_2017 == 86 | rank_2017 >= 184) %>% arrange(-rank_2017)
-    dzizza_hdi <- hdi_data %>% filter(rank_2017 <= 5 | rank_2017 == 13 | rank_2017 == 86 | rank_2017 >= 184) %>% arrange(-rank_2017)
-    dzizza_data <- left_join(dzizza_co2, dzizza_hdi)
+    #Create new HDI and CO2 data frames containing only the years for both and with a new global average column
+    dzizza_hdi <- hdi_data %>% select(rank_2017, Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
+    dzizza_hdi[nrow(dzizza_hdi) + 1, ] <- c(0, "World Average", mean(dzizza_hdi$HDI_1990, na.rm = TRUE), mean(dzizza_hdi$HDI_1995, na.rm = TRUE), mean(dzizza_hdi$HDI_2000, na.rm = TRUE), mean(dzizza_hdi$HDI_2005, na.rm = TRUE), mean(dzizza_hdi$HDI_2010, na.rm = TRUE), mean(dzizza_hdi$HDI_2011, na.rm = TRUE), mean(dzizza_hdi$HDI_2012, na.rm = TRUE), mean(dzizza_hdi$HDI_2013, na.rm = TRUE), mean(dzizza_hdi$HDI_2014, na.rm = TRUE))
+    dzizza_hdi <- dzizza_hdi %>% mutate(rank_2017 = as.numeric(rank_2017)) #Recast rank_2017 as numeric
+    
+    dzizza_co2 <- co2_data
+    dzizza_co2[nrow(dzizza_co2) + 1, ] <- c(0, "World Average", mean(dzizza_co2$co2_1990, na.rm = TRUE), mean(dzizza_co2$co2_1995, na.rm = TRUE), mean(dzizza_co2$co2_2000, na.rm = TRUE), mean(dzizza_co2$co2_2005, na.rm = TRUE), mean(dzizza_co2$co2_2010, na.rm = TRUE), mean(dzizza_co2$co2_2011, na.rm = TRUE), mean(dzizza_co2$co2_2012, na.rm = TRUE), mean(dzizza_co2$co2_2013, na.rm = TRUE), mean(dzizza_co2$co2_2014, na.rm = TRUE))
+    dzizza_co2 <- dzizza_co2 %>% mutate(rank_2017 = as.numeric(rank_2017)) #Recast rank_2017 as numeric
+    #gather(key = Year, value = Country_HDI, -Country, -rank_2017)
 
 # KAYLA
     #plot data for HDI
