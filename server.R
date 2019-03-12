@@ -49,8 +49,6 @@ main_server <- function(input, output) {
   #These data sets need to be scaled to one another, so that the maximum value of HDI (1) is roughly the same height as the maximum value of CO2 (45.4)
   #scale_y_continuous is used to draw the second axis on the righthand side demonstrating HDI values
   output$dzizza_plot <- renderPlot({
-    print(input$years)
-    
     ggplot() +
       geom_col(mapping = aes_string(x = "Country", y = paste0("HDI_", input$years)), position_dodge(width = NULL, preserve = c("total")), data = dzizza_hdi) +
       scale_y_continuous(sec.axis = sec_axis(~. / max(dzizza_co2$HDI_2014, na.rm=TRUE), name = paste("HDI in", input$years))) +
