@@ -24,11 +24,11 @@ library("ggplot2")
     years <- as.character(substr(colnames, 5, nchar(colnames)))
     
 # DILLON
-    #First, produce data frames of countries to analyze from both data sets, consisting of the top and bottom of the HDI rankings and a few select additional countries
+    #Produce data frames of countries to analyze from both data sets, consisting of the top and bottom of the HDI rankings and a few select additional countries
     dzizza_co2 <- co2_data %>% mutate(rank_2017 = as.numeric(rank_2017)) %>% filter(rank_2017 <= 5 | rank_2017 == 13 | rank_2017 == 86 | rank_2017 >= 184) %>% arrange(-rank_2017)
     dzizza_hdi <- hdi_data %>% filter(rank_2017 <= 5 | rank_2017 == 13 | rank_2017 == 86 | rank_2017 >= 184) %>% arrange(-rank_2017)
+
 # KAYLA
-    
     #plot data for HDI
     plot_HDI_data <- hdi_data %>% 
       gather(
