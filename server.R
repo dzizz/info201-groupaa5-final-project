@@ -1,10 +1,21 @@
 #Import the needed libraries
 library("shiny")
 library("dplyr")
-library("ggplot")
+library("ggplot2")
 source("data.R")
 
 #Create the server
 main_server <- function(input, output) {
   
+  #Create Dillon Zizza's planned visualization
+  #Generate two plots - One for CO2, one for HDI, using the previously created data frames with the desired countries
+  #These data sets need to be scaled to one another, so that the maximum value of HDI (1) is roughly the same height as the maximum value of CO2 (45.4)
+  #scale_y_continuous is used to draw the second axis on the righthand side demonstrating HDI values
+    output$dzizza_plot <- renderPlot({
+    ggplot() +
+      geom_col(mapping = aes(x = Country, y = HDI_2014, fill = "a3e61"), position = "dodge2", data = dzizza_hdi) +
+      scale_y_continuous(sec.axis = sec_axis(~. / max(dzizza_co2$co2_2014, na.rm=TRUE), name = paste("HDI in", ""))) +
+      geom_col(mapping = aes(x = Country, y = co2_2014, fill = "6c0dc4"), position = "dodge2", data = dzizza_co2)
+      
+  })
 }

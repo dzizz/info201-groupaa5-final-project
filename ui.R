@@ -13,7 +13,7 @@ main_ui <- fluidPage(
                   tabPanel("Table"),
                   tabPanel("1"),
                   tabPanel("2"),
-                  tabPanel("Dillon"),
+                  tabPanel("Dillon", plotOutput(outputId = "dzizza_plot")),
                   tabPanel("4")
       )
     )
