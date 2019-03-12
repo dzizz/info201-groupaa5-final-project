@@ -26,7 +26,8 @@ main_ui <- fluidPage(
                          mainPanel(
                            tabsetPanel(type = "tabs",
                                        tabPanel("Summary"),
-                                       tabPanel("Plot")
+                                       tabPanel("Plot",
+                                                plotOutput("rico_plot"))
                            )
                          )
                        )),
@@ -45,13 +46,18 @@ main_ui <- fluidPage(
               tabPanel("3",
                        sidebarLayout(
                          sidebarPanel(
-                           
+                           selectInput(
+                             inputId = "years",
+                             label = "Select Year:",
+                             choices = c(years, "Select year..."),
+                             selected = "Select year..."
+                           )
                          ),
                          mainPanel(
                            tabsetPanel(type = "tabs",
                                        tabPanel("Summary"),
-                                       tabPanel("Plot",
-                                                 plotOutput("rico_plot"))
+                                       tabPanel("Plot")
+                                                
                            )
                          )
                        )),
