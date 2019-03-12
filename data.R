@@ -27,6 +27,7 @@ library("ggplot2")
     #Produce data frames of countries to analyze from both data sets, consisting of the top and bottom of the HDI rankings and a few select additional countries
     dzizza_co2 <- co2_data %>% mutate(rank_2017 = as.numeric(rank_2017)) %>% filter(rank_2017 <= 5 | rank_2017 == 13 | rank_2017 == 86 | rank_2017 >= 184) %>% arrange(-rank_2017)
     dzizza_hdi <- hdi_data %>% filter(rank_2017 <= 5 | rank_2017 == 13 | rank_2017 == 86 | rank_2017 >= 184) %>% arrange(-rank_2017)
+    dzizza_data <- left_join(dzizza_co2, dzizza_hdi)
 
 # KAYLA
     #plot data for HDI
