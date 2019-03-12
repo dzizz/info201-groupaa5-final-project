@@ -11,7 +11,6 @@ main_ui <- fluidPage(
       selectInput(
         inputId = "years",
         label = "Select Year:",
-        #choices = c(years, "Select year..."),
         choices = years,
         selected = 1990
       )
