@@ -38,6 +38,7 @@ library("ggplot2")
     colnames <- colnames[3:11]
     yearsCO2 <- as.character(substr(colnames, 5, nchar(colnames)))
     
+    # add on the country codes
     hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
     co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
     
