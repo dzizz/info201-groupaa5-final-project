@@ -146,4 +146,6 @@ main_server <- function(input, output) {
                                         colour = "white")
       )
   })
+
 }
+
