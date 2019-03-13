@@ -25,16 +25,20 @@ main_server <- function(input, output) {
   output$CO2_Summary <- renderDataTable({
     datatable(co2_summary)
   })
-  
+####################
+## Aramis work area:
+####################
   output$rico_plot <- renderPlot({
-    join_co2_hdi <- na.omit(join_co2_hdi) %>%
-      spread(key = co2_hdi, value = value) %>%
-      filter(year == input$rico_year) %>%
+    join_co2_hdi <- na.omit(join_co2_hdi) %>% #omit na values from df
+      spread(key = co2_hdi, value = value) %>% #get co2 and HDI in two diff col
+      filter(year == input$rico_year) %>% #Look at input year to get specific year in slider
       mutate(Change.point = cut(
         HDI, breaks = c(0, 0.55, 0.70, 0.80, 1),
-        labels = c("Low", "Medium", "High", "Very High")
+        labels = c("Low", "Medium", "High", "Very High") #Create break tabs to get plots for HDI ratios
       )) 
     
+    ## This function takes in a df and a break point which will then filter for the break that has been picked
+    ## in radio buttons. 
     get_group <- function(join_co2_hdi, point) {
       if(point == "Low") {
         filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
@@ -45,14 +49,15 @@ main_server <- function(input, output) {
       } else if (point == "Very High") {
         filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
       } else {
-        join_co2_hdi
+        join_co2_hdi #If the break doesn't work then it will show **all** values
       }
     }
     
-    join_co2_hdi <- get_group(join_co2_hdi, input$rico_hdi_levels)
+    join_co2_hdi <- get_group(join_co2_hdi, input$rico_hdi_levels) #gets the group called in radiobuttons
     
     ggplot(data = join_co2_hdi) +
-      geom_point(mapping = aes(y = co2, x = HDI, colour = year)) 
+      geom_point(mapping = aes(y = co2, x = HDI, colour = year)) + #Map the plots
+      ggtitle("Correlation between HDI and CO2 emmissions per year")
   })
   
   output$kaylaHDIMap <- renderPlot({
