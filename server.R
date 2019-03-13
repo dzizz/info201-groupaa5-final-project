@@ -126,12 +126,12 @@ main_server <- function(input, output) {
   output$dzizza_plot <- renderPlot({
     if(input$dzizza_HDI_CO2 == "HDI") {
       ggplot(data = eval(parse(text = paste0(input$dzizza_HDI_category, "_hdi")))) +
-        geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +
+        geom_col(mapping = aes(x = as.factor(Year), y = HDI), fill = "#9d4c6c") +
         scale_y_continuous(name = "Human Development Index", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1)) +
         ggtitle("Human Development Index values over Time")
     } else {
       ggplot(data = eval(parse(text = paste0(input$dzizza_HDI_category, "_co2")))) +
-        geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
+        geom_col(mapping = aes(x = as.factor(Year), y = CO2), fill = "#4c689d") +
         scale_y_continuous(name = "Metric Tons of Carbon Dioxide per Person", trans = "log10") +
         ggtitle("Carbox Dioxide Output values over Time")
     }
