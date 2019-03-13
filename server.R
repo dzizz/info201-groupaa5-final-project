@@ -131,8 +131,9 @@ main_server <- function(input, output) {
     } else {
       ggplot(data = eval(parse(text = paste0(input$dzizza_HDI_category, "_co2")))) +
         geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
-        coord_cartesian(ylim = c(3.9, 5.0)) +
-        scale_y_continuous(name = "Metric Tons of Carbon Dioxide per Person", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0)) 
+        #coord_cartesian(ylim = c(3.9, 5.0)) +
+        scale_y_continuous(name = "Metric Tons of Carbon Dioxide per Person", trans = "log10")
+      #, breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0)) 
     }
   })
 }

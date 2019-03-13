@@ -61,7 +61,7 @@ library("ggplot2")
     colnames(dzizza_high_co2) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
     dzizza_high_co2 <- dzizza_high_co2 %>% gather(key = Year, value = CO2, -Country) %>% mutate(Year = as.numeric(Year), CO2 = as.numeric(CO2))
     
-    #Middle HDI
+    #Low HDI
     dzizza_low_hdi <- hdi_data %>% filter(rank_2017 >= 169) %>% select(Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
     dzizza_low_hdi[nrow(dzizza_low_hdi) + 1, ] <- c("Average", mean(dzizza_low_hdi$HDI_1990, na.rm = TRUE), mean(dzizza_low_hdi$HDI_1995, na.rm = TRUE), mean(dzizza_low_hdi$HDI_2000, na.rm = TRUE), mean(dzizza_low_hdi$HDI_2005, na.rm = TRUE), mean(dzizza_low_hdi$HDI_2010, na.rm = TRUE), mean(dzizza_low_hdi$HDI_2011, na.rm = TRUE), mean(dzizza_low_hdi$HDI_2012, na.rm = TRUE), mean(dzizza_low_hdi$HDI_2013, na.rm = TRUE), mean(dzizza_low_hdi$HDI_2014, na.rm = TRUE))
     dzizza_low_hdi <- dzizza_low_hdi %>% filter(Country == "Average")
@@ -73,8 +73,6 @@ library("ggplot2")
     dzizza_low_co2 <- dzizza_low_co2 %>% filter(Country == "Average")
     colnames(dzizza_low_co2) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
     dzizza_low_co2 <- dzizza_low_co2 %>% gather(key = Year, value = CO2, -Country) %>% mutate(Year = as.numeric(Year), CO2 = as.numeric(CO2))
-    
-    #Low HDI
 
 
 # KAYLA
