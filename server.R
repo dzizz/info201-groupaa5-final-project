@@ -3,10 +3,28 @@ library("shiny")
 library("dplyr")
 library("ggplot2")
 library("tidyr")
+library("DT")
 source("data.R")
 
 #Create the server
 main_server <- function(input, output) {
+  
+  output$HDI_data <- renderDataTable({
+    datatable(hdi_data)
+  })
+  
+  output$CO2_data <- renderDataTable({
+    datatable(co2_data)
+  })
+  
+  output$HDI_Summary <- renderDataTable({
+    datatable(hdi_summary)
+  })
+  
+  output$CO2_Summary <- renderDataTable({
+    datatable(co2_summary)
+  })
+  
   output$rico_plot <- renderPlot({
     join_co2_hdi <- left_join(co2_data, hdi_data, by = "Country") %>%
       select(-rank_2017.x, -rank_2017.y) %>%
@@ -35,6 +53,7 @@ main_server <- function(input, output) {
         size = .1
       ) +
       coord_map() +
+      scale_color_continuous(low = "black", high = "red" ,na.value = "grey50") +
       labs(
         title = "HDI Levels",
         fill = "Values"

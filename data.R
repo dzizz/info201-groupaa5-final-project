@@ -23,6 +23,12 @@ library("ggplot2")
     colnames <- colnames[3:27]
     years <- as.character(substr(colnames, 5, nchar(colnames)))
     
+    # Produces a summary of descriptive statistics of each year in the 'hdi_data' data frame 
+    hdi_summary <- as.data.frame(do.call(cbind, lapply(hdi_data[3:27], summary)))   
+    
+    # Produces a summary of descriptive statistics of each year in the 'co2_data' data frame
+    co2_summary <- as.data.frame(do.call(cbind, lapply(co2_data[3:11], summary)))   
+    
 # DILLON
     
 # KAYLA
@@ -55,11 +61,13 @@ library("ggplot2")
     world <- map_data("world")
     world_HDI <- world %>% 
       rename(Country = region) %>% 
-      full_join(plot_HDI_data, by = "Country")
+      mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
+      left_join(plot_HDI_data)
     
     world_CO2 <- world %>% 
       rename(Country = region) %>% 
-      full_join(plot_CO2_data, by = "Country")
+      mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
+      left_join(plot_CO2_data)
 
 # ARAMIS
     
