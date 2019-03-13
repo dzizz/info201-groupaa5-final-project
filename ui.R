@@ -307,27 +307,58 @@ into what other factors may influence specific countries and why their HDI/CO2 e
               
               tags$h4(
                 tags$strong("Quantitative Analysis :")),
-                  tags$p("analyze")     
+                  tags$p("When filtering the data sets for countries whose CO2 emissions per capita have
+                         decreased from 1990 to 2014, only 43 countries remain out of a total of 195 countries. 
+                         This means that about 22% of countries decreased their CO2 emissions per capita from
+                         1990 to 2014. Some leading and well known countries in this subset include the United 
+                         States, Canada the United Kingdom, and Australia. Also included in this subset is #2 ranked in
+                         Human Development Index(HDI), Switzerland"),
+              
+                  tags$p("Furthermore, when we look at the countries whose CO2 emissions per capita have decreased, 
+                         we conclude that 100% of these countries experience an increase in HDI. Meaning that none of these countries 
+                         experience a lower quality of life when their CO2 emissions decreased. This information can
+                         be surprising as we naturally would think that a higher quality of life would include 
+                         more materialistic things that emit CO2 such as modes of transportation which would therefore
+                         increase the amount of CO2 per capita being released. However, this is not the case."),
+              
+                  tags$p("When viewing the map that displays the location of all the countries within this subset,
+                         you see there is a range of where this decrease in CO2 and increase in HDI occurs. As you
+                         may see there are big chunks of Africa and Europe that all follow this trend."),
+                  
+                  tags$p("When you input a specific range of change in HDI values, a table is displayed of all the 
+                         countries that are in that category. When you see these countries information you can notice 
+                         that there is a bit of wide difference in the change in CO2 although their change in HDI value
+                         is very similar. For example when you view the countries whose HDI value increased more than 0.200,
+                         only two countries return. These countries include Rwanda and Singapore. Rwanda experienced no change
+                         in CO2 emissions per capita while Singapore experienced decrease of 2.0 in CO2 emissions per capita. 
+                         This difference may be due to the locations of the countries or it may be due to HOW the country 
+                         experienced an increase in the quality of their life.")
             )
           ),
           
           tabPanel("Plot",
             tags$div(
               tags$h4(
-                tags$strong( "Map")
-              )
+                tags$strong("Map")
+              ),
+              tags$p(em("To view the locations of the countries."))
             ),
             plotOutput("julias_map"), 
             tags$div(
               tags$h4(
-                tags$strong( "Table")
-              )
+                tags$strong("Table")
+              ),
+              tags$p(em("To view and compare countries that coincide with specific ranged changes in HDI values.
+                     Can also view more information about each country, its rank in 2017, its co2 values, and the values
+                     for the 1990 and 2014 years. The 'rank 2017' represents the countries rank in HDI value."))
+              
             ),
             dataTableOutput("julias_country_info"),
             tags$div(
               tags$h4(
-                tags$strong( "Plot")
-              )
+                tags$strong("Plot")
+              ),
+              tags$p(em("To visualize and view a country's HDI progression from 1990 to 2014."))
             ),
             plotOutput("julias_change_in_hdi")
           )

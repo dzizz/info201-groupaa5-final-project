@@ -162,7 +162,7 @@ library("ggplot2")
     
     co2_decrease_and_hdi_df <- co2_decrease_and_hdi_df %>% 
       mutate(Country.Code = iso.alpha(co2_decrease_and_hdi_df$Country[1:43], n = 3)) %>% 
-      mutate(bin = cut(co2_decrease_and_hdi_df$change_in_hdi, breaks = c(-0.999, 0.050, 0.100, 0.150, 0.200), labels = c("0.000 - 0.050", "0.051 - 0.100", "0.101 - 0.150", "0.151 - 0.200")))
+      mutate(bin = cut(co2_decrease_and_hdi_df$change_in_hdi, breaks = c(-0.999, 0.050, 0.100, 0.150, 0.200, Inf), labels = c("0.000 - 0.050", "0.051 - 0.100", "0.101 - 0.150", "0.151 - 0.200", "0.201 +")))
     
     co2_decrease_and_hdi_df$Country.Code[11] <- "COD"
     co2_decrease_and_hdi_df$Country.Code[39] <- "GBR"
