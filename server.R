@@ -134,7 +134,7 @@ main_server <- function(input, output) {
     ggplot(data = world_co2_decrease_and_hdi_df) + 
       geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = bin), color = "black", size = .1) +
       coord_map(xlim = c(-180,180), ylim = c(-60, 90)) +
-      labs(fill = "HDI Increase", x = "Longitude", y = "Latitude") +
+      labs(fill = "Change In HDI", x = "Longitude", y = "Latitude") +
       scale_fill_brewer(palette = "Greens") +
       theme(
         panel.background = element_rect(fill = "lightblue",

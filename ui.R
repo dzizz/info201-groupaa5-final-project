@@ -35,7 +35,9 @@ environmental impact of increading human development. If Norway is good, then it
 poorer countries to increase their quality of life. If Norway is bad, it may give pause to the pursuit of modernization,
 perhaps prompting questions reevaluating what we value as a society and how we go about achieving a high 
                   quality of life.")
-      )),
+      ),
+      tags$div(img("Image of carbon emission", src = 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjWuYCA2P7gAhU1GDQIHeaVAgAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.huffingtonpost.com%2Fentry%2Fcutting-carbon-emissions-could-save-175000-lives_us_56cc91bfe4b0928f5a6d52a1&psig=AOvVaw2xA6NLYgtEKy6NsSo8gLnO&ust=1552551660831591'))
+      ),
 
       tabPanel("HDI Data", dataTableOutput("HDI_data")),
       tabPanel("CO2 Data", dataTableOutput("CO2_data")), 
