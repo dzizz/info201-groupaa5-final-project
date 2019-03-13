@@ -58,7 +58,7 @@ main_ui <- fluidPage(
                            radioButtons(
                              inputId = "dzizza_HDI_CO2",
                              label = "Select Data:",
-                             choices = c("HDI", "CO2"),
+                             choices = c("Human Development Index" = "HDI", "Carbon Dioxide" = "CO2"),
                              selected = "HDI"
                            ),
                            selectInput(

@@ -124,12 +124,12 @@ main_server <- function(input, output) {
     if(input$dzizza_HDI_CO2 == "HDI") {
       ggplot(data = dzizza_global_hdi) +
         geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +
-        scale_y_continuous(name = "HDI", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
+        scale_y_continuous(name = "Human Development Index", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
     } else {
       ggplot(data = dzizza_global_co2) +
         geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
         coord_cartesian(ylim = c(3.9, 5.0)) +
-        scale_y_continuous(name = "CO2", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0)) 
+        scale_y_continuous(name = "Metric Tons of Carbon Dioxide per Person", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0)) 
     }
   })
 }
