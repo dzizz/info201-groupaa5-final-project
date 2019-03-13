@@ -177,9 +177,9 @@ we can view which countries are most alike or unalike. Then, we can wonder what 
 cause certain countries to be similar or different. Some factors may include, wealth, population,
 number of cities, industries, laws, culture, etc."),
                                                   tags$p("Scientists could potentially want this
-information to determine what factors cause high CO2 emission levels in certain countries and 
-what factors cause this. They would be able to see the similarities between certain countries and 
-determine specific correlations, such as high/low HDI values. This would allow scientists dive 
+information to determine what factors cause high CO2 emission levels in certain countries. 
+They could potentially see the similarities between certain countries high/low HDI values and CO2 
+emission values. This would allow scientists to dive 
 deeper into this relationships and find even more specific factors, for example, high HDI is an
 indication of happiness levels among the population, which can mean there are large industries and 
 cities within the country. This could potentially mean that due to the large amount of human activity
@@ -198,7 +198,7 @@ the happier people are the more CO2 emissions are produced. On the other hand, l
 Afghanistan's CO2 and HDI levels in 2014, we see that the values are very low. We could speculate
 that this might be due to the War in Afghanistan, which caused many people to lose their homes and
 loved ones - which is why the HDI value is so low. In relation to CO2 emissions, the HDI 
-levels could also suggest that industries slowed down or there is less civilization."),
+levels could also suggest that industries slowed down or that there is less civilization."),
                                                   tags$p("From the map alone, we cannot see any
 outstanding outliers. Outliers are more clearly seen through scatter plots or bar graphs, 
 as seen on the other visualizations within this report."),
