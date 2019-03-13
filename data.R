@@ -18,11 +18,6 @@ library("ggplot2")
       rename(rank_2017 = HDI.Rank..2017.)
     names(co2_data)[3:11] <- gsub("X", "co2_", names(co2_data)[3:11]) #change colnames
     
-    # range of years
-    colnames <- colnames(hdi_data)
-    colnames <- colnames[3:27]
-    years <- as.character(substr(colnames, 5, nchar(colnames)))
-    
     # Produces a summary of descriptive statistics of each year in the 'hdi_data' data frame 
     hdi_summary <- as.data.frame(do.call(cbind, lapply(hdi_data[3:27], summary)))   
     
@@ -33,8 +28,26 @@ library("ggplot2")
     
 # KAYLA
     
-    #plot data for HDI
+    # range of years for HDI data
+    colnames <- colnames(hdi_data)
+    colnames <- colnames[3:27]
+    yearsHDI <- as.character(substr(colnames, 5, nchar(colnames)))
+    
+    # range of years for CO2 data
+    colnames <- colnames(co2_data)
+    colnames <- colnames[3:11]
+    yearsCO2 <- as.character(substr(colnames, 5, nchar(colnames)))
+    
+    hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
+    co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
+    
     plot_HDI_data <- hdi_data %>% 
+      mutate(Country.Code = iso.alpha(hdi_data$Country, n = 3))
+    plot_CO2_data <- co2_data %>% 
+      mutate(Country.Code = iso.alpha(co2_data$Country, n = 3))
+    
+    #plot data for HDI
+    plot_HDI_data <- plot_HDI_data %>% 
       gather(
         key = Year,
         value = hdi_data,
@@ -46,7 +59,7 @@ library("ggplot2")
     plot_HDI_data$rank_2017 <- NULL
     
     #plot data for CO2
-    plot_CO2_data <- co2_data %>% 
+    plot_CO2_data <- plot_CO2_data %>% 
       gather(
         key = Year,
         value = co2_data,
