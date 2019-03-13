@@ -128,14 +128,22 @@ main_server <- function(input, output) {
       geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
       scale_y_continuous(name = "CO2", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0))
   })
-}
 
-  # Julias work
-    
+
   output$julias_map <- renderPlot({
     ggplot(data = world_co2_decrease_and_hdi_df) + 
-      geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = bin), color = "white", size = .1) +
+      geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = bin), color = "black", size = .1) +
       coord_map(xlim = c(-180,180), ylim = c(-60, 90)) +
       labs(fill = "HDI Increase", x = "Longitude", y = "Latitude") +
-      scale_fill_brewer(palette = "Reds")
+      scale_fill_brewer(palette = "Greens") +
+      theme(
+        panel.background = element_rect(fill = "lightblue",
+                                        colour = "lightblue",
+                                        size = 0.5, linetype = "solid"),
+        panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                        colour = "white"), 
+        panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
+                                        colour = "white")
+      )
   })
+}

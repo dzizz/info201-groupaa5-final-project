@@ -208,7 +208,7 @@ into what other factors may influence two specific countries and why their HDI/C
                                                   tags$p("why ask this quesiton"),
                                                   tags$h4(
                                                     tags$strong("Quantitative Analysis :")),
-                                                  tags$p("analyze"),
+                                                  tags$p("analyze"))
                                                 ),
                                        tabPanel("Plot",
                                                 plotOutput("julias_map")
@@ -218,4 +218,3 @@ into what other factors may influence two specific countries and why their HDI/C
                        ))
   )
 )
-
