@@ -4,8 +4,8 @@ library("shiny")
 #Create the main user interface using a fluidPage
 main_ui <- navbarPage("HDI vs CO2",
   tabPanel("Home",
-    tabsetPanel(type = "tabs",
-      tabPanel("Introduction", 
+      fluidPage(
+        titlePanel("Introduction"), 
         tags$h3("Country Level HDI and CO2 Emission Data Analysis"),
           tags$div(
             tags$p("This is an analysis of country-level data Human Development Index (HDI) 
@@ -37,11 +37,15 @@ perhaps prompting questions reevaluating what we value as a society and how we g
                   quality of life.")
       )),
 
-      tabPanel("HDI Data", dataTableOutput("HDI_data")),
-      tabPanel("CO2 Data", dataTableOutput("CO2_data")), 
-      tabPanel("Summary",
-      dataTableOutput("HDI_Summary"), tags$br(), tags$br(), 
-      dataTableOutput("CO2_Summary"))
+    column(12, 
+      tabsetPanel(type = "tabs",
+        tabPanel("HDI Data", dataTableOutput("HDI_data")),
+        tabPanel("CO2 Data", dataTableOutput("CO2_data")), 
+        tabPanel("Summary",
+          dataTableOutput("HDI_Summary"), tags$br(), tags$br(), 
+          dataTableOutput("CO2_Summary")
+        )
+      )
     )
   ),
 
