@@ -16,7 +16,13 @@ main_server <- function(input, output) {
         co2_hdi = substr(co2_hdi, 1, nchar(co2_hdi) - 5)
       ) 
     join_co2_hdi <- na.omit(join_co2_hdi) %>%
-      spread(key = co2_hdi, value = value)
+      spread(key = co2_hdi, value = value) %>%
+      filter(year == input$rico_year) %>%
+      mutate(Change.point = cut(
+        HDI, breaks = c(0, 0.55, 0.70, 0.80, 1),
+        labels = c("Low", "Medium", "High", "Very High")
+      )) %>%
+      filter(Change.point == as.character(input$rico_hdi_levels))
     
     ggplot(data = join_co2_hdi) +
       geom_point(mapping = aes(y = co2, x = HDI, colour = year)) 
