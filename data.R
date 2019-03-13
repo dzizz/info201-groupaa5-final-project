@@ -105,6 +105,14 @@ library("ggplot2")
 
 # ARAMIS
     
+    join_co2_hdi <- left_join(co2_data, hdi_data, by = "Country") %>%
+      select(-rank_2017.x, -rank_2017.y) %>%
+      gather(key = co2_hdi, value = value, -Country) %>%
+      mutate(
+        year = as.numeric(substr(co2_hdi, nchar(co2_hdi) - 3, nchar(co2_hdi))),
+        co2_hdi = substr(co2_hdi, 1, nchar(co2_hdi) - 5)
+      ) 
+    
 # JULIA
 # QUESTION 4
     
