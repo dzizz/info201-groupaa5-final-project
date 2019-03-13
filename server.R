@@ -80,9 +80,11 @@ main_server <- function(input, output) {
         color = "white",
         size = .1
       ) +
-      coord_map() +
+      coord_map(xlim = c(-180,180), ylim = c(-60, 90)) +
       labs(
         title = "HDI Levels",
+        x = "Longitude",
+        y = "Latitude",
         fill = "Values"
       ) 
   })
@@ -107,9 +109,11 @@ main_server <- function(input, output) {
         color = "white",
         size = .1
       ) +
-      coord_map() +
+      coord_map(xlim = c(-180,180), ylim = c(-60, 90)) +
       labs(
         title = "CO2 Levels",
+        x = "Longitude",
+        y = "Latitude",
         fill = "Values"
       ) 
   })
