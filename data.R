@@ -26,14 +26,15 @@ library("ggplot2")
     
 # DILLON
     #Create new HDI and CO2 data frames containing only the years for both and with a new global average column
-    dzizza_hdi <- hdi_data %>% select(rank_2017, Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
-    dzizza_hdi[nrow(dzizza_hdi) + 1, ] <- c(0, "World Average", mean(dzizza_hdi$HDI_1990, na.rm = TRUE), mean(dzizza_hdi$HDI_1995, na.rm = TRUE), mean(dzizza_hdi$HDI_2000, na.rm = TRUE), mean(dzizza_hdi$HDI_2005, na.rm = TRUE), mean(dzizza_hdi$HDI_2010, na.rm = TRUE), mean(dzizza_hdi$HDI_2011, na.rm = TRUE), mean(dzizza_hdi$HDI_2012, na.rm = TRUE), mean(dzizza_hdi$HDI_2013, na.rm = TRUE), mean(dzizza_hdi$HDI_2014, na.rm = TRUE))
-    dzizza_hdi <- dzizza_hdi %>% mutate(rank_2017 = as.numeric(rank_2017)) #Recast rank_2017 as numeric
+    dzizza_hdi <- hdi_data %>% select(Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
+    dzizza_hdi[nrow(dzizza_hdi) + 1, ] <- c("World Average", mean(dzizza_hdi$HDI_1990, na.rm = TRUE), mean(dzizza_hdi$HDI_1995, na.rm = TRUE), mean(dzizza_hdi$HDI_2000, na.rm = TRUE), mean(dzizza_hdi$HDI_2005, na.rm = TRUE), mean(dzizza_hdi$HDI_2010, na.rm = TRUE), mean(dzizza_hdi$HDI_2011, na.rm = TRUE), mean(dzizza_hdi$HDI_2012, na.rm = TRUE), mean(dzizza_hdi$HDI_2013, na.rm = TRUE), mean(dzizza_hdi$HDI_2014, na.rm = TRUE))
+    dzizza_hdi <- dzizza_hdi %>% filter(Country == "World Average")
+    dzizza_hdi <- dzizza_hdi %>% gather(key = Year, value = HDI, -Country)
     
     dzizza_co2 <- co2_data
     dzizza_co2[nrow(dzizza_co2) + 1, ] <- c(0, "World Average", mean(dzizza_co2$co2_1990, na.rm = TRUE), mean(dzizza_co2$co2_1995, na.rm = TRUE), mean(dzizza_co2$co2_2000, na.rm = TRUE), mean(dzizza_co2$co2_2005, na.rm = TRUE), mean(dzizza_co2$co2_2010, na.rm = TRUE), mean(dzizza_co2$co2_2011, na.rm = TRUE), mean(dzizza_co2$co2_2012, na.rm = TRUE), mean(dzizza_co2$co2_2013, na.rm = TRUE), mean(dzizza_co2$co2_2014, na.rm = TRUE))
     dzizza_co2 <- dzizza_co2 %>% mutate(rank_2017 = as.numeric(rank_2017)) #Recast rank_2017 as numeric
-    #gather(key = Year, value = Country_HDI, -Country, -rank_2017)
+
 
 # KAYLA
     #plot data for HDI
