@@ -21,7 +21,7 @@ main_ui <- fluidPage(
                   tabPanel("Summary"),
                   tabPanel("Table"),
                   tabPanel("1"),
-                  tabPanel("Dillon", plotOutput(outputId = "dzizza_plot")),
+                  tabPanel("Dillon", plotOutput(outputId = "dzizza_hdi"), plotOutput(outputId = "dzizza_co2")),
                   tabPanel("Kayla", plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")),
                   tabPanel("4")
       )

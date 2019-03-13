@@ -33,9 +33,12 @@ library("ggplot2")
     dzizza_hdi <- dzizza_hdi %>% gather(key = Year, value = HDI, -Country)
     dzizza_hdi <- dzizza_hdi %>% mutate(Year = as.numeric(Year), HDI = as.numeric(HDI))
     
-    dzizza_co2 <- co2_data
-    dzizza_co2[nrow(dzizza_co2) + 1, ] <- c(0, "World Average", mean(dzizza_co2$co2_1990, na.rm = TRUE), mean(dzizza_co2$co2_1995, na.rm = TRUE), mean(dzizza_co2$co2_2000, na.rm = TRUE), mean(dzizza_co2$co2_2005, na.rm = TRUE), mean(dzizza_co2$co2_2010, na.rm = TRUE), mean(dzizza_co2$co2_2011, na.rm = TRUE), mean(dzizza_co2$co2_2012, na.rm = TRUE), mean(dzizza_co2$co2_2013, na.rm = TRUE), mean(dzizza_co2$co2_2014, na.rm = TRUE))
-    dzizza_co2 <- dzizza_co2 %>% mutate(rank_2017 = as.numeric(rank_2017)) #Recast rank_2017 as numeric
+    dzizza_co2 <- co2_data %>% select(Country, co2_1990, co2_1995, co2_2000, co2_2005, co2_2010:co2_2014)
+    dzizza_co2[nrow(dzizza_co2) + 1, ] <- c("World Average", mean(dzizza_co2$co2_1990, na.rm = TRUE), mean(dzizza_co2$co2_1995, na.rm = TRUE), mean(dzizza_co2$co2_2000, na.rm = TRUE), mean(dzizza_co2$co2_2005, na.rm = TRUE), mean(dzizza_co2$co2_2010, na.rm = TRUE), mean(dzizza_co2$co2_2011, na.rm = TRUE), mean(dzizza_co2$co2_2012, na.rm = TRUE), mean(dzizza_co2$co2_2013, na.rm = TRUE), mean(dzizza_co2$co2_2014, na.rm = TRUE))
+    dzizza_co2 <- dzizza_co2 %>% filter(Country == "World Average")
+    colnames(dzizza_co2) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
+    dzizza_co2 <- dzizza_co2 %>% gather(key = Year, value = CO2, -Country)
+    dzizza_co2 <- dzizza_co2 %>% mutate(Year = as.numeric(Year), CO2 = as.numeric(CO2))
 
 
 # KAYLA
