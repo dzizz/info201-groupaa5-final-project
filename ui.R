@@ -60,7 +60,9 @@ main_ui <- fluidPage(
                          mainPanel(
                            tabsetPanel(type = "tabs",
                                        tabPanel("Description"),
-                                       tabPanel("Plot")
+                                       tabPanel("Plot",
+                                                plotOutput("dzizza_hdi"),
+                                                plotOutput("dzizza_co2"))
                            )
                          )
                        )),
