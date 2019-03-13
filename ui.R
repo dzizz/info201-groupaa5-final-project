@@ -64,15 +64,14 @@ main_ui <- fluidPage(
                            selectInput(
                              inputId = "dzizza_HDI_category",
                              label = "Select HDI level:",
-                             choices = c("All", "High", "Middle", "Low"),
+                             choices = c("All" = "dzizza_global", "High" = "dzizza_high", "Low" = "dzizza_low"),
                              selected = "All")
                          ),
                          mainPanel(
                            tabsetPanel(type = "tabs",
                                        tabPanel("Description"),
                                        tabPanel("Plot",
-                                                plotOutput("dzizza_hdi"),
-                                                plotOutput("dzizza_co2"))
+                                                plotOutput("dzizza_plot"))
                            )
                          )
                        )),

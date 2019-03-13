@@ -121,14 +121,15 @@ main_server <- function(input, output) {
   #Use scale_y_continuous to make sure the bounds and breaks for the plots look good and are easily readable
   #Use coord_cartesian to place limits on the Y axis of the CO2 plot
   #Both visualizations change their data depending on the value selected in "dzizza_HDI_category", representing a yearly average from either the entire planet, the 20 lowest HDI countries, the 20 middle HDI countries, or the 20 highest HDI countries
+  #Use eval(parse(text = )) to parse a pasted string as the data source
   
-  output$dzizza_hdi <- renderPlot({
+  output$dzizza_plot <- renderPlot({
     if(input$dzizza_HDI_CO2 == "HDI") {
-      ggplot(data = dzizza_global_hdi) +
+      ggplot(data = eval(parse(text = paste0(input$dzizza_HDI_category, "_hdi")))) +
         geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +
         scale_y_continuous(name = "Human Development Index", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
     } else {
-      ggplot(data = dzizza_global_co2) +
+      ggplot(data = eval(parse(text = paste0(input$dzizza_HDI_category, "_co2")))) +
         geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
         coord_cartesian(ylim = c(3.9, 5.0)) +
         scale_y_continuous(name = "Metric Tons of Carbon Dioxide per Person", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0)) 
