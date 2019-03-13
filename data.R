@@ -126,12 +126,28 @@ library("ggplot2")
     co2_decrease_and_hdi_df <- left_join(co2_decrease_countries, hdi_1990_to_2014, by = c("Country")) %>% 
       na.omit(co2_decrease_and_hdi_df$change_hdi)
     
-   ###########
+   # Adds column for country codes
     
     co2_decrease_and_hdi_df <- co2_decrease_and_hdi_df %>% 
       mutate(Country.Code = iso.alpha(co2_decrease_and_hdi_df$Country[1:43], n = 3))
     
+    co2_decrease_and_hdi_df$Country.Code[11] <- "COD"
+    co2_decrease_and_hdi_df$Country.Code[39] <- "GBR"
+    co2_decrease_and_hdi_df$Country.Code[40] <- "USA"
+    
     world_map <- world %>% 
       mutate(Country.Code = iso.alpha(world$region, n = 3))
     
+    # Joins the two data frames together - keeping the NA values
+    
+    world_co2_decrease_and_hdi_df <- full_join(world_map, co2_decrease_and_hdi_df, by = "Country.Code") %>% 
+      select(-Country)
+    
+    # Different categories for changes in HDI
+    
+    world_co2_decrease_and_hdi_df <- mutate(world_co2_decrease_and_hdi_df, bin = cut(world_co2_decrease_and_hdi_df$change_in_hdi, breaks = c(-0.999, 0.050, 0.100, 0.150, 0.200), labels = c("0.000 - 0.050", "0.051 - 0.100", "0.101 - 0.150", "0.151 - 0.200")))
+    
+    # Creating visualizations
+    
+   
     

@@ -145,8 +145,21 @@ into what other factors may influence two specific countries and why their HDI/C
                          ),
                          mainPanel(
                            tabsetPanel(type = "tabs",
-                                       tabPanel("Description"),
-                                       tabPanel("Plot")
+                                       tabPanel("Description",
+                                                tags$div(
+                                                  tags$h4(
+                                                    tags$strong("Critical Question :")),
+                                                  tags$p("question here"),
+                                                  tags$h4(
+                                                    tags$strong("Why Ask? :")),
+                                                  tags$p("why ask this quesiton"),
+                                                  tags$h4(
+                                                    tags$strong("Quantitative Analysis :")),
+                                                  tags$p("analyze"),
+                                                ),
+                                       tabPanel("Plot",
+                                                plotOutput("julias_map")
+                                                )
                            )
                          )
                        ))

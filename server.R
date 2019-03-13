@@ -131,3 +131,13 @@ main_server <- function(input, output) {
       scale_y_continuous(name = "CO2", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0))
   })
 }
+
+  # Julias work
+    
+  output$julias_map <- renderPlot({
+    ggplot(data = world_co2_decrease_and_hdi_df) + 
+      geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = bin), color = "white", size = .1) +
+      coord_map(xlim = c(-180,180), ylim = c(-60, 90)) +
+      labs(fill = "HDI Increase", x = "Longitude", y = "Latitude") +
+      scale_fill_brewer(palette = "Reds")
+  })
