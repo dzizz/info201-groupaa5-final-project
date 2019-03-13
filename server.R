@@ -43,9 +43,14 @@ main_server <- function(input, output) {
   output$kaylaHDIMap <- renderPlot({
     plot_data <- world_HDI
     
-    if (input$kaylayears != "Select year...") {
+    if (input$HDI_countries != "Select country...") {
       plot_data <- plot_data %>% 
-        filter(Year == input$kaylayears)
+        filter(Country == input$HDI_countries)
+    }
+    
+    if (input$yearsHDI != "Select year...") {
+      plot_data <- plot_data %>% 
+        filter(Year == input$yearsHDI)
     }
     
     # Map visualization 
@@ -65,9 +70,14 @@ main_server <- function(input, output) {
   output$kaylaCO2Map <- renderPlot({
     plot_data <- world_CO2
     
-    if (input$kaylayears != "Select year...") {
+    if (input$CO2_countries != "Select country...") {
       plot_data <- plot_data %>% 
-        filter(Year == input$kaylayears)
+        filter(Country == input$CO2_countries)
+    }
+    
+    if (input$yearsCO2 != "Select year...") {
+      plot_data <- plot_data %>% 
+        filter(Year == input$yearsCO2)
     }
     
     # Map visualization 

@@ -51,24 +51,31 @@ main_ui <- fluidPage(
                          sidebarPanel(
                            
                            selectInput(
-                             inputId = "kaylayears",
-                             label = "Select Year:",
-                             choices = c(years, "Select year..."),
+                             inputId = "yearsHDI",
+                             label = "Select Year (HDI Levels):",
+                             choices = c("Select year...", yearsHDI),
                              selected = "Select year..."
                            ),
                            
                            selectInput(
                              inputId = "HDI_countries",
                              label = "Select Country (HDI Levels):",
-                             choices = as.character(hdi_data$Country),
-                             selected = "United States"
+                             choices = c("Select country...", as.character(hdi_data$Country)),
+                             selected = "Select country..."
+                           ),
+                           
+                           selectInput(
+                             inputId = "yearsCO2",
+                             label = "Select Year (CO2 Levels):",
+                             choices = c("Select year...", yearsCO2),
+                             selected = "Select year..."
                            ),
                            
                            selectInput(
                              inputId = "CO2_countries",
                              label = "Select Country (CO2):",
-                             choices = as.character(co2_data$Country),
-                             selected = "Norway"
+                             choices = c("Select country...", as.character(co2_data$Country)),
+                             selected = "Select country..."
                            )
                          ),
                          mainPanel(
