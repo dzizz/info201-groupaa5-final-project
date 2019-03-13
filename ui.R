@@ -75,7 +75,7 @@ perhaps prompting questions reevaluating what we value as a society and how we g
           tabPanel("Description",
             tags$div(
               tags$h4(
-                tags$strong("The Question:")),
+                tags$strong("Critical Question:")),
               
                 tags$p("What is the relationship between a highly 
 >>>>>>> rico_branch
@@ -83,7 +83,7 @@ developed nation and their CO2 emissions? Does CO2 emissions increase or decreas
 more developed? For instance, compare the CO2 emissions of a country with a high HDI with one of low HDI."),
               
                 tags$h4(
-                  tags$strong("Relavence/Interest:")),
+                  tags$strong("Why Ask? :")),
               
                 tags$p("This is a question of interest because it 
 can tell us if there is a positive or negative correlation between the quality of life of a country 
@@ -173,14 +173,14 @@ emissions? Will this pave a way for other nations modernizing to follow in their
           tabPanel("Description",
             tags$div(
               tags$h4(
-                tags$strong("My Question:")),
+                tags$strong("Critical Question:")),
               
               tags$p("Which two countries are 
 most similar in terms of HDI and CO2 emissions? Which two are most different? Why might this be - 
 that is, what factors may influence this?"),
               
               tags$h4(
-                tags$strong("Relavence/Interest:")),
+                tags$strong("Why Ask? :")),
               
               tags$p("This is a question of interest because we 
 can compare and contrast countries and determine why they might be different or similar. 
@@ -189,7 +189,7 @@ we can view which countries are most alike or unalike. WHO WOULD WANT THIS INFOR
                      FOR WHAT"),
               
               tags$h4(
-                tags$strong("Quantitative Analysis:")),
+                tags$strong("Quantitative Analysis :")),
               
               tags$p("By ordering the joined data with the HDI 
 and CO2 emission values from 2014, we can see which countries are the most similar in terms of HDI 
@@ -233,7 +233,8 @@ into what other factors may influence two specific countries and why their HDI/C
               tags$h4(
                 tags$strong("Quantitative Analysis :")),
               tags$p("analyze")     
-          ),
+          )
+      ),
           tabPanel("Plot",
             plotOutput("julias_map")
           )
@@ -241,5 +242,5 @@ into what other factors may influence two specific countries and why their HDI/C
       )
     ))
   )
-)
+
 
