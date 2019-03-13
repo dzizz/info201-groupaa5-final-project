@@ -35,7 +35,28 @@ main_server <- function(input, output) {
         co2_hdi = substr(co2_hdi, 1, nchar(co2_hdi) - 5)
       ) 
     join_co2_hdi <- na.omit(join_co2_hdi) %>%
-      spread(key = co2_hdi, value = value)
+      spread(key = co2_hdi, value = value) %>%
+      filter(year == input$rico_year) %>%
+      mutate(Change.point = cut(
+        HDI, breaks = c(0, 0.55, 0.70, 0.80, 1),
+        labels = c("Low", "Medium", "High", "Very High")
+      )) 
+    
+    get_group <- function(join_co2_hdi, point) {
+      if(point == "Low") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else if (point == "Medium") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else if (point == "High") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else if (point == "Very High") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else {
+        join_co2_hdi
+      }
+    }
+    
+    join_co2_hdi <- get_group(join_co2_hdi, input$rico_hdi_levels)
     
     ggplot(data = join_co2_hdi) +
       geom_point(mapping = aes(y = co2, x = HDI, colour = year)) 
@@ -44,7 +65,15 @@ main_server <- function(input, output) {
   output$kaylaHDIMap <- renderPlot({
     plot_data <- world_HDI
     
-    #widget code here
+    if (input$HDI_countries != "Select country...") {
+      plot_data <- plot_data %>% 
+        filter(Country == input$HDI_countries)
+    }
+    
+    if (input$yearsHDI != "Select year...") {
+      plot_data <- plot_data %>% 
+        filter(Year == input$yearsHDI)
+    }
     
     # Map visualization 
     ggplot(data = plot_data) +
@@ -54,7 +83,6 @@ main_server <- function(input, output) {
         size = .1
       ) +
       coord_map() +
-      scale_color_continuous(low = "black", high = "red" ,na.value = "grey50") +
       labs(
         title = "HDI Levels",
         fill = "Values"
@@ -64,7 +92,15 @@ main_server <- function(input, output) {
   output$kaylaCO2Map <- renderPlot({
     plot_data <- world_CO2
     
-    #widget code here
+    if (input$CO2_countries != "Select country...") {
+      plot_data <- plot_data %>% 
+        filter(Country == input$CO2_countries)
+    }
+    
+    if (input$yearsCO2 != "Select year...") {
+      plot_data <- plot_data %>% 
+        filter(Year == input$yearsCO2)
+    }
     
     # Map visualization 
     ggplot(data = plot_data) +
