@@ -1,11 +1,11 @@
 #Import the needed libraries
 library("shiny")
-library("leaflet")
+library("shinythemes")
 
 #Create the main user interface using a fluidPage
 main_ui <- navbarPage("HDI vs CO2",
   tabPanel("Home",
-      fluidPage(
+      fluidPage(theme = shinytheme("flatly"),
         titlePanel("Introduction"), 
         tags$h3("Country Level HDI and CO2 Emission Data Analysis"),
           tags$div(
