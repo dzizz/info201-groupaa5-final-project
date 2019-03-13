@@ -1,6 +1,7 @@
 #Import the needed libraries
 library("shiny")
 library("dplyr")
+library("ggplot2")
 source("data.R")
 
 #Create the server
