@@ -15,7 +15,7 @@ library("ggplot2")
     names(hdi_data)[3:30] <- gsub("X", "HDI_", names(hdi_data)[3:30]) #change colnames
     
     co2_data <- co2_data[, colSums(is.na(co2_data)) < nrow(co2_data)] %>% #delete na values
-      rename(rank_2017 = HDI.Rank..2017.)
+      rename(rank_2017 = HDI.Rank..2017.) %>% mutate(rank_2017 = as.numeric(rank_2017))
     names(co2_data)[3:11] <- gsub("X", "co2_", names(co2_data)[3:11]) #change colnames
     
     # Produces a summary of descriptive statistics of each year in the 'hdi_data' data frame 
@@ -24,8 +24,32 @@ library("ggplot2")
     # Produces a summary of descriptive statistics of each year in the 'co2_data' data frame
     co2_summary <- as.data.frame(do.call(cbind, lapply(co2_data[3:11], summary)))   
     
-# DILLON
+    # Removes space in 'Country' column
+    hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
+    co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
     
+    # World Map
+    world <- map_data("world")
+    
+    
+    
+# DILLON
+    #Create new HDI and CO2 data frames containing only the years for both and with a new global average column
+    dzizza_hdi <- hdi_data %>% select(Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
+    dzizza_hdi[nrow(dzizza_hdi) + 1, ] <- c("World Average", mean(dzizza_hdi$HDI_1990, na.rm = TRUE), mean(dzizza_hdi$HDI_1995, na.rm = TRUE), mean(dzizza_hdi$HDI_2000, na.rm = TRUE), mean(dzizza_hdi$HDI_2005, na.rm = TRUE), mean(dzizza_hdi$HDI_2010, na.rm = TRUE), mean(dzizza_hdi$HDI_2011, na.rm = TRUE), mean(dzizza_hdi$HDI_2012, na.rm = TRUE), mean(dzizza_hdi$HDI_2013, na.rm = TRUE), mean(dzizza_hdi$HDI_2014, na.rm = TRUE))
+    dzizza_hdi <- dzizza_hdi %>% filter(Country == "World Average")
+    colnames(dzizza_hdi) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
+    dzizza_hdi <- dzizza_hdi %>% gather(key = Year, value = HDI, -Country)
+    dzizza_hdi <- dzizza_hdi %>% mutate(Year = as.numeric(Year), HDI = as.numeric(HDI))
+    
+    dzizza_co2 <- co2_data %>% select(Country, co2_1990, co2_1995, co2_2000, co2_2005, co2_2010:co2_2014)
+    dzizza_co2[nrow(dzizza_co2) + 1, ] <- c("World Average", mean(dzizza_co2$co2_1990, na.rm = TRUE), mean(dzizza_co2$co2_1995, na.rm = TRUE), mean(dzizza_co2$co2_2000, na.rm = TRUE), mean(dzizza_co2$co2_2005, na.rm = TRUE), mean(dzizza_co2$co2_2010, na.rm = TRUE), mean(dzizza_co2$co2_2011, na.rm = TRUE), mean(dzizza_co2$co2_2012, na.rm = TRUE), mean(dzizza_co2$co2_2013, na.rm = TRUE), mean(dzizza_co2$co2_2014, na.rm = TRUE))
+    dzizza_co2 <- dzizza_co2 %>% filter(Country == "World Average")
+    colnames(dzizza_co2) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
+    dzizza_co2 <- dzizza_co2 %>% gather(key = Year, value = CO2, -Country)
+    dzizza_co2 <- dzizza_co2 %>% mutate(Year = as.numeric(Year), CO2 = as.numeric(CO2))
+
+
 # KAYLA
     
     # range of years for HDI data
@@ -38,10 +62,13 @@ library("ggplot2")
     colnames <- colnames[3:11]
     yearsCO2 <- as.character(substr(colnames, 5, nchar(colnames)))
     
+<<<<<<< HEAD
     # add on the country codes
     hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
     co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
     
+=======
+>>>>>>> master
     plot_HDI_data <- hdi_data %>% 
       mutate(Country.Code = iso.alpha(hdi_data$Country, n = 3))
     plot_CO2_data <- co2_data %>% 
@@ -72,7 +99,7 @@ library("ggplot2")
     plot_CO2_data$rank_2017 <- NULL
     
     # World map data to visualize
-    world <- map_data("world")
+
     world_HDI <- world %>% 
       rename(Country = region) %>% 
       mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
@@ -86,55 +113,32 @@ library("ggplot2")
 # ARAMIS
     
 # JULIA
-# Data frames and variables to help answer critical question 4 about the percentage of 
-# countries whose HDI increased or decreased while their CO2 emissions levels decreased
+# QUESTION 4
     
     # Data frame of all countries change in HDI from 1990 to 2014
     
     hdi_1990_to_2014 <- hdi_data %>%
-      mutate(change_hdi = HDI_2014 - HDI_1990) %>% 
-      select(Country, HDI_1990, HDI_2014, change_hdi)
+      mutate(change_in_hdi = HDI_2014 - HDI_1990) %>% 
+      select(Country, HDI_1990, HDI_2014, change_in_hdi)
     
     # Data frame of all the countries whose CO2 emmisions per capita DECREASED from 1990 to 2014
     
     co2_decrease_countries <- co2_data %>% 
-      select(rank_2017, Country, co2_1990,co2_2014) %>% 
-      filter(co2_2014 < co2_1990)
+      select(rank_2017, Country, co2_1990, co2_2014) %>% 
+      filter(co2_2014 <= co2_1990) %>% 
+      mutate(change_in_co2 = co2_2014 - co2_1990)
     
     # Joins the two data frames together - excluding the NA values
     
     co2_decrease_and_hdi_df <- left_join(co2_decrease_countries, hdi_1990_to_2014, by = c("Country")) %>% 
       na.omit(co2_decrease_and_hdi_df$change_hdi)
     
-    # Number of countries whose CO2 emissions per capita decreased
+   ###########
     
-    num_countries <- nrow(co2_decrease_and_hdi_df)   # 34 -- with the NA vlaues it is 48
+    co2_decrease_and_hdi_df <- co2_decrease_and_hdi_df %>% 
+      mutate(Country.Code = iso.alpha(co2_decrease_and_hdi_df$Country[1:43], n = 3))
     
-    # Number of countries whose HDI increased as their CO2 emissions decreased
-    
-    increased_hdi <- co2_decrease_and_hdi_df %>% 
-      filter(change_hdi > 0) %>% 
-      nrow()   # 34 -- all of the countries whose CO2 emissions decreased, their quality of life increased
-    
-    # Number of countries whose HDI decreased as their CO2 emissions decreased
-    
-    increased_0.1_hdi <- co2_decrease_and_hdi_df %>% 
-      filter(change_hdi <= 0.1) %>% 
-      nrow()   # 11 
-    
-    # Percentage of countries whose HDI increased as their CO2 emissions decreased
-    
-    percent_increased_hdi <- paste0((increased_hdi / num_countries) * 100, "%")   # 100%
-    
-    # Percentage of countries whose HDI increased above 0.1 as their CO2 emissions decreased
-    
-    percent_increased_0.1_hdi <- paste0(round((increased_0.1_hdi / num_countries) * 100, digits = 2 ), "%")
-    
-    # Percentage of countries whose HDI decreased as their CO2 emissions decreased
-    
-    percent_decreased_hdi <- paste0((0 / num_countries) * 100, "%")
-    
-    
-    
+    world_map <- world %>% 
+      mutate(Country.Code = iso.alpha(world$region, n = 3))
     
     
