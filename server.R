@@ -116,9 +116,11 @@ main_server <- function(input, output) {
       ) 
   })
   
-  #Create Dillon Zizza's planned visualization
+  #Create Dillon Zizza's visualization
   #Generate two plots - One for CO2, one for HDI, using the previously created data frames with the desired countries
   #Use scale_y_continuous to make sure the bounds and breaks for the plots look good and are easily readable
+  #Use coord_cartesian to place limits on the Y axis of the CO2 plot
+  #Both visualizations change their data depending on the value selected in "dzizza_HDI_category", representing a yearly average from either the entire planet, the 20 lowest HDI countries, the 20 middle HDI countries, or the 20 highest HDI countries
   
   output$dzizza_hdi <- renderPlot({
     if(input$dzizza_HDI_CO2 == "HDI") {
