@@ -122,15 +122,36 @@ emissions? Will this pave a way for other nations modernizing to follow in their
   tabPanel("Dillon",
     sidebarLayout(
       sidebarPanel(
-                           
-      ),
-      
-      mainPanel(
-        tabsetPanel(type = "tabs",
-        tabPanel("Description"),
+        radioButtons(
+          inputId = "dzizza_HDI_CO2",
+          label = "Select Data:",
+          choices = c("Human Development Index" = "HDI", "Carbon Dioxide" = "CO2"),
+          selected = "HDI"
+        ),
+        selectInput(
+          inputId = "dzizza_HDI_category",
+          label = "Select HDI level:",
+          choices = c("All" = "dzizza_global", "High" = "dzizza_high", "Low" = "dzizza_low"),
+          selected = "All")
+        ),
+    mainPanel(
+      tabsetPanel(type = "tabs",
+        tabPanel("Description",
+          tags$div(
+            tags$h4(
+              tags$strong("Critical Question:")),
+              tags$p("What trends can be observed in Human Development Index and carbon dioxide emissions per capita over the years included in this data set? Can correlations be drawn between the rates of Human Development Index and carbon dioxide emissions per capita increase or decrease? Are countries in the low or high ends of the Human Development Index scale changing in different ways?"),
+            tags$h4(
+              tags$strong("Why Ask?:")),
+              tags$p("These questions are of interest because they can demonstrate the direction that the world as a whole is heading in. If Human Development Index is showing an upward trend globally between 1990 and 2014 that is good, but if that corresponds to a much higher increase in carbon dioxide emissions per capita over the same time frame then it may point to some worrying signs for environmentalism."),
+            tags$h4(
+              tags$strong("Quantitative Analysis:")),
+              tags$p("The data shows a consistant increase in Human Development Index across the board, both in terms of the global average, and in terms of the top and bottom of the Human Development Index rankings. This demonstrates that the world on the whole is improving, likely along most if not all of the metrics that make up the Human Development Index such as wealth, safety, life expectancy, and education rates."),
+              tags$p("The data is less consistent when it comes to carbon dioxide emissions per capita. While the global average has begun to decline slightly between 2005 and 2014 and the top ranked countries in terms of HDI have made significant cuts to their carbon emissions dating all the way back to 2000, the countries on the other end of the Human Development Index spectrum posted less positive results, with average rates of CO2 emissions per capita roughly stabilizing between 1995 and 2011, but then getting steadily higher after that.")
+            )),
         tabPanel("Plot",
-        plotOutput("dzizza_hdi"),
-        plotOutput("dzizza_co2"))
+          plotOutput("dzizza_plot")
+        )
       )
     )
   )),
