@@ -118,8 +118,8 @@ main_server <- function(input, output) {
   
   #Create Dillon Zizza's planned visualization
   #Generate two plots - One for CO2, one for HDI, using the previously created data frames with the desired countries
-  #These data sets need to be scaled to one another, so that the maximum value of HDI (1) is roughly the same height as the maximum value of CO2 (45.4)
-  #scale_y_continuous is used to draw the second axis on the righthand side demonstrating HDI values
+  #Use scale_y_continuous to make sure the bounds and breaks for the plots look good and are easily readable
+  
   output$dzizza_hdi <- renderPlot({
     ggplot(data = dzizza_hdi) +
       geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +
