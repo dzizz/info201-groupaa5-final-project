@@ -100,18 +100,18 @@ and compare these values for a particular year next to each other."),
                   tags$strong("Quantitative Analysis:")),
               
                 tags$p("When comparing the very high HDI values with 
-their CO2 emission values, you can automatically notice that the many of these countries have a higher
-rate of CO2 emissions. When looking at all countries, you can a curve in the scatter plot, you see an 
+their CO2 emission values, you can automatically notice that many of these countries have a higher
+rate of CO2 emissions. When looking at all countries, you can spot a curve in the scatter plot, you see an 
 increase in CO2 emissions as HDI values go up."),
               
                 tags$p("However, when looking at all the countries, 
 it is easy to notice that there are many outliers in some of the countries with the highest Human
 Devlopment Index. Some reasoning for this could be how much later they began modernizing their nation
-and their overall population."),
+or their overall population."),
               
                 tags$p("When looking at the medium and high HDI
 plots you can also see some countries with very high CO2 emissions, meaning that a high HDI value does
-not mean a high CO2 emissions in all cases. The question to be asked with this data are: is there also 
+not mean a high CO2 emission in all cases. The question to be asked with this data are: is there also 
 a correlation with population, hdi and co2 emissions? How can one fix the industralization and 
 modernization of one country to lower their CO2 emissions?"),
               
