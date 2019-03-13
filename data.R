@@ -34,20 +34,21 @@ library("ggplot2")
     
     
 # DILLON
-    #Create new HDI and CO2 data frames containing only the years for both and with a new global average column
-    dzizza_hdi <- hdi_data %>% select(Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
-    dzizza_hdi[nrow(dzizza_hdi) + 1, ] <- c("World Average", mean(dzizza_hdi$HDI_1990, na.rm = TRUE), mean(dzizza_hdi$HDI_1995, na.rm = TRUE), mean(dzizza_hdi$HDI_2000, na.rm = TRUE), mean(dzizza_hdi$HDI_2005, na.rm = TRUE), mean(dzizza_hdi$HDI_2010, na.rm = TRUE), mean(dzizza_hdi$HDI_2011, na.rm = TRUE), mean(dzizza_hdi$HDI_2012, na.rm = TRUE), mean(dzizza_hdi$HDI_2013, na.rm = TRUE), mean(dzizza_hdi$HDI_2014, na.rm = TRUE))
-    dzizza_hdi <- dzizza_hdi %>% filter(Country == "World Average")
-    colnames(dzizza_hdi) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
-    dzizza_hdi <- dzizza_hdi %>% gather(key = Year, value = HDI, -Country)
-    dzizza_hdi <- dzizza_hdi %>% mutate(Year = as.numeric(Year), HDI = as.numeric(HDI))
+    #Create new HDI and CO2 data frames containing only the years for both and an average column
+    #First, create global averages
+    dzizza_global_hdi <- hdi_data %>% select(Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
+    dzizza_global_hdi[nrow(dzizza_global_hdi) + 1, ] <- c("World Average", mean(dzizza_global_hdi$HDI_1990, na.rm = TRUE), mean(dzizza_global_hdi$HDI_1995, na.rm = TRUE), mean(dzizza_global_hdi$HDI_2000, na.rm = TRUE), mean(dzizza_global_hdi$HDI_2005, na.rm = TRUE), mean(dzizza_global_hdi$HDI_2010, na.rm = TRUE), mean(dzizza_global_hdi$HDI_2011, na.rm = TRUE), mean(dzizza_global_hdi$HDI_2012, na.rm = TRUE), mean(dzizza_global_hdi$HDI_2013, na.rm = TRUE), mean(dzizza_global_hdi$HDI_2014, na.rm = TRUE))
+    dzizza_global_hdi <- dzizza_global_hdi %>% filter(Country == "World Average")
+    colnames(dzizza_global_hdi) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
+    dzizza_global_hdi <- dzizza_global_hdi %>% gather(key = Year, value = HDI, -Country)
+    dzizza_global_hdi <- dzizza_global_hdi %>% mutate(Year = as.numeric(Year), HDI = as.numeric(HDI))
     
-    dzizza_co2 <- co2_data %>% select(Country, co2_1990, co2_1995, co2_2000, co2_2005, co2_2010:co2_2014)
-    dzizza_co2[nrow(dzizza_co2) + 1, ] <- c("World Average", mean(dzizza_co2$co2_1990, na.rm = TRUE), mean(dzizza_co2$co2_1995, na.rm = TRUE), mean(dzizza_co2$co2_2000, na.rm = TRUE), mean(dzizza_co2$co2_2005, na.rm = TRUE), mean(dzizza_co2$co2_2010, na.rm = TRUE), mean(dzizza_co2$co2_2011, na.rm = TRUE), mean(dzizza_co2$co2_2012, na.rm = TRUE), mean(dzizza_co2$co2_2013, na.rm = TRUE), mean(dzizza_co2$co2_2014, na.rm = TRUE))
-    dzizza_co2 <- dzizza_co2 %>% filter(Country == "World Average")
-    colnames(dzizza_co2) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
-    dzizza_co2 <- dzizza_co2 %>% gather(key = Year, value = CO2, -Country)
-    dzizza_co2 <- dzizza_co2 %>% mutate(Year = as.numeric(Year), CO2 = as.numeric(CO2))
+    dzizza_global_co2 <- co2_data %>% select(Country, co2_1990, co2_1995, co2_2000, co2_2005, co2_2010:co2_2014)
+    dzizza_global_co2[nrow(dzizza_global_co2) + 1, ] <- c("World Average", mean(dzizza_global_co2$co2_1990, na.rm = TRUE), mean(dzizza_global_co2$co2_1995, na.rm = TRUE), mean(dzizza_global_co2$co2_2000, na.rm = TRUE), mean(dzizza_global_co2$co2_2005, na.rm = TRUE), mean(dzizza_global_co2$co2_2010, na.rm = TRUE), mean(dzizza_global_co2$co2_2011, na.rm = TRUE), mean(dzizza_global_co2$co2_2012, na.rm = TRUE), mean(dzizza_global_co2$co2_2013, na.rm = TRUE), mean(dzizza_global_co2$co2_2014, na.rm = TRUE))
+    dzizza_global_co2 <- dzizza_global_co2 %>% filter(Country == "World Average")
+    colnames(dzizza_global_co2) <- c("Country", 1990, 1995, 2000, 2005, 2010, 2011, 2012, 2013, 2014)
+    dzizza_global_co2 <- dzizza_global_co2 %>% gather(key = Year, value = CO2, -Country)
+    dzizza_global_co2 <- dzizza_global_co2 %>% mutate(Year = as.numeric(Year), CO2 = as.numeric(CO2))
 
 
 # KAYLA

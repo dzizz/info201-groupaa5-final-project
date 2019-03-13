@@ -55,7 +55,17 @@ main_ui <- fluidPage(
               tabPanel("Dillon",
                        sidebarLayout(
                          sidebarPanel(
-                           
+                           checkboxGroupInput(
+                             inputId = "dzizza_HDI_CO2_check",
+                             label = NULL,
+                             choices = c("HDI", "CO2"),
+                             selected = c("HDI", "CO2")
+                           ),
+                           selectInput(
+                             inputId = "dzizza_HDI_category",
+                             label = "Select HDI level:",
+                             choices = c("All", "High", "Middle", "Low"),
+                             selected = "All")
                          ),
                          mainPanel(
                            tabsetPanel(type = "tabs",

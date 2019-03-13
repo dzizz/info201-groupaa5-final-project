@@ -121,12 +121,12 @@ main_server <- function(input, output) {
   #Use scale_y_continuous to make sure the bounds and breaks for the plots look good and are easily readable
   
   output$dzizza_hdi <- renderPlot({
-    ggplot(data = dzizza_hdi) +
+    ggplot(data = dzizza_global_hdi) +
       geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +
       scale_y_continuous(name = "HDI", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
   })
   output$dzizza_co2 <- renderPlot({
-    ggplot(data = dzizza_co2) +
+    ggplot(data = dzizza_global_co2) +
       geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
       scale_y_continuous(name = "CO2", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0))
   })
