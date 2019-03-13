@@ -50,7 +50,7 @@ main_server <- function(input, output) {
   #scale_y_continuous is used to draw the second axis on the righthand side demonstrating HDI values
   output$dzizza_plot <- renderPlot({
     ggplot(data = dzizza_hdi) +
-      geom_point(mapping = aes_string(x = "Year", y = "HDI"), color = "red") +
-      scale_y_discrete(name = "HDI", breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1), labels = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
+      geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +
+      scale_y_continuous(name = "HDI", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1), labels = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
   })
 }
