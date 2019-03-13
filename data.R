@@ -62,13 +62,6 @@ library("ggplot2")
     colnames <- colnames[3:11]
     yearsCO2 <- as.character(substr(colnames, 5, nchar(colnames)))
     
-<<<<<<< HEAD
-    # add on the country codes
-    hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
-    co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
-    
-=======
->>>>>>> master
     plot_HDI_data <- hdi_data %>% 
       mutate(Country.Code = iso.alpha(hdi_data$Country, n = 3))
     plot_CO2_data <- co2_data %>% 

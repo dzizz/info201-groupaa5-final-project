@@ -6,21 +6,22 @@ main_ui <- fluidPage(
   titlePanel("Title"),
   tabsetPanel(type = "tabs",
               tabPanel("Home",
-                       sidebarLayout(
-                         sidebarPanel(
-                           
-                         ),
-                         mainPanel(
-                           tabsetPanel(type = "tabs",
-                                       tabPanel("Introduction"),
-                                       tabPanel("HDI Data", dataTableOutput("HDI_data")),
-                                       tabPanel("CO2 Data", dataTableOutput("CO2_data")), 
-                                       tabPanel("Summary",
-                                                dataTableOutput("HDI_Summary"), tags$br(), tags$br(), 
-                                                dataTableOutput("CO2_Summary"))
-                           )
-                         )
-                       )),
+                tabsetPanel(type = "tabs",
+                  tabPanel("Introduction", 
+                    tags$h3("Country Level HDI and CO2 Emission Data Analysis"),
+                    tags$div(
+                      tags$p("This is an analysis of country-level data Human Development Index (HDI) and carbon dioxide emissions per capita provided by the United Nations Development Program's Human Development Reports."),
+                      tags$p(paste0("The Human Development Index is a numerical ranking of countries on the basis of overall quality of life produced by the United Nations. It operates on a scale from 0 to 1, with 0 being the worst and 1 being the best. As detailed on the "), tags$a(href="http://hdr.undp.org/en/content/human-development-index-hdi", "UN Website"), ", this evaluation is done on a broad basis of the three dimensions: \"long and healthy life\", \"knowledge\", and \"a decent standard of living\", comprised of life expectancy, average years of schooling, and gross national income per capita respectively. Gross national income per capita is itself a complex measure, but in effect indicates the overall wealth generated in that country, divided by the number of people in the country to get the amount of wealth available per person."),
+                      tags$p("Carbon dioxide emissions per capita is more straightforward, representing the total carbon dioxide emitted by that country divded by the total population of the country. This is a valuable statistic because it shows which countries are polluting more on the whole while removing the overwhelming statistical weight that countries with very large populations like China, India, and the United States add."),
+                      tags$p("This data is valuable to analyze together because it shows some of the less explored elements of the developed versus developing world. If a country like Norway, with the highest HDI in the world, shows a corresponding increase or decrease in carbon dioxide emissions per capita, it represents a meaningful environmental impact of increading human development. If Norway is good, then it gives all the more reason to encourage poorer countries to increase their quality of life. If Norway is bad, it may give pause to the pursuit of modernization, perhaps prompting questions reevaluating what we value as a society and how we go about achieving a high quality of life.")
+                  )),
+                    tabPanel("HDI Data", dataTableOutput("HDI_data")),
+                    tabPanel("CO2 Data", dataTableOutput("CO2_data")), 
+                    tabPanel("Summary",
+                    dataTableOutput("HDI_Summary"), tags$br(), tags$br(), 
+                    dataTableOutput("CO2_Summary"))
+                )
+              ),
               tabPanel("Rico",
                        sidebarLayout(
                          sidebarPanel(
