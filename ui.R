@@ -72,10 +72,10 @@ main_ui <- fluidPage(
                                        tabPanel("Description",
                                                 tags$div(
                                                   tags$h4(
-                                                    tags$strong("My Question:")),
+                                                    tags$strong("Critical Question:")),
                                                   tags$p("What trends can be observed in Human Development Index and carbon dioxide emissions per capita over the years included in this data set? Can correlations be drawn between the rates of Human Development Index and carbon dioxide emissions per capita increase or decrease? Are countries in the low or high ends of the Human Development Index scale changing in different ways?"),
                                                   tags$h4(
-                                                    tags$strong("Relavence/Interest:")),
+                                                    tags$strong("Why Ask:")),
                                                   tags$p("These questions are of interest because they can demonstrate the direction that the world as a whole is heading in. If Human Development Index is showing an upward trend globally between 1990 and 2014 that is good, but if that corresponds to a much higher increase in carbon dioxide emissions per capita over the same time frame then it may point to some worrying signs for environmentalism."),
                                                   tags$h4(
                                                     tags$strong("Quantitative Analysis:")),
