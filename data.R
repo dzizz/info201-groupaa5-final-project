@@ -33,8 +33,16 @@ library("ggplot2")
     
 # KAYLA
     
-    #plot data for HDI
+    hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
+    co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
+    
     plot_HDI_data <- hdi_data %>% 
+      mutate(Country.Code = iso.alpha(hdi_data$Country, n = 3))
+    plot_CO2_data <- co2_data %>% 
+      mutate(Country.Code = iso.alpha(co2_data$Country, n = 3))
+    
+    #plot data for HDI
+    plot_HDI_data <- plot_HDI_data %>% 
       gather(
         key = Year,
         value = hdi_data,
@@ -46,7 +54,7 @@ library("ggplot2")
     plot_HDI_data$rank_2017 <- NULL
     
     #plot data for CO2
-    plot_CO2_data <- co2_data %>% 
+    plot_CO2_data <- plot_CO2_data %>% 
       gather(
         key = Year,
         value = co2_data,
@@ -61,10 +69,12 @@ library("ggplot2")
     world <- map_data("world")
     world_HDI <- world %>% 
       rename(Country = region) %>% 
+      mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
       left_join(plot_HDI_data)
     
     world_CO2 <- world %>% 
       rename(Country = region) %>% 
+      mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
       left_join(plot_CO2_data)
 
 # ARAMIS
