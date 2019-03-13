@@ -186,6 +186,7 @@ By arranging the data from highest HDI or highest CO2 or by lowest HDI or lowest
 we can view which countries are most alike or unalike. Then, we can wonder what sorts of factors 
 cause certain countries to be similar or different. Some factors may include, wealth, population,
 number of cities, industries, laws, culture, etc."),
+              
               tags$p("Scientists could potentially want this
 information to determine what factors cause high CO2 emission levels in certain countries. 
 They could potentially see the similarities between certain countries high/low HDI values and CO2 
@@ -196,9 +197,11 @@ cities within the country. This could potentially mean that due to the large amo
 and machinery, the CO2 emissions are very high. By determining information like this, 
 scientists would be able to tell the public what sorts of factors are causing/aiding in 
 high CO2 emission values and what we can do to reduce it."),
+              
               tags$h4(
                 tags$strong("Quantitative Analysis:")),
-                tags$p("By comparing the HDI 
+              
+              tags$p("By comparing the HDI 
 and CO2 emission values in each country, we can see which countries are the most similar in terms of HDI 
 and CO2 emission values. Looking at the map data, we can see that there does appear to 
 be a slight correlation in HDI and CO2 levels. For example, looking at Adorra's CO2 and HDI levels 
@@ -209,17 +212,19 @@ Afghanistan's CO2 and HDI levels in 2014, we see that the values are very low. W
 that this might be due to the War in Afghanistan, which caused many people to lose their homes and
 loved ones - which is why the HDI value is so low. In relation to CO2 emissions, the HDI 
 levels could also suggest that industries slowed down or that there is less civilization."),
-                tags$p("From the map alone, we cannot see any
+              
+              tags$p("From the map alone, we cannot see any
 outstanding outliers. Outliers are more clearly seen through scatter plots or bar graphs, 
 as seen on the other visualizations within this report."),
-                tags$p("Based on this data, we can further look 
+              
+              tags$p("Based on this data, we can further look 
 into what other factors may influence specific countries and why their HDI/CO2 emissions are 
                                                          similar/different."))),
-      tabPanel("Maps",
-         plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")
+          tabPanel("Maps",
+            plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")
+          )
+        )
       )
-    )
-   )
    )),
       tabPanel("Julia",
          sidebarLayout(
@@ -238,14 +243,15 @@ into what other factors may influence specific countries and why their HDI/CO2 e
               tags$h4(
                 tags$strong("Quantitative Analysis :")),
               tags$p("analyze")     
-          )
-      ),
+            )
+          ),
+          
           tabPanel("Plot",
             plotOutput("julias_map")
           )
         )
       )
     ))
-  )
+)
 
 
