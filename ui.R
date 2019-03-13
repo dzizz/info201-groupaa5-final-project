@@ -61,7 +61,8 @@ perhaps prompting questions reevaluating what we value as a society and how we g
                              min = 1990,
                              max = 2014,
                              value = 2014,
-                             step = 5
+                             step = 5,
+                             sep = ""
                            )
                          ),
                          mainPanel(
