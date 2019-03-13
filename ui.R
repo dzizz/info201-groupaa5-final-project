@@ -226,10 +226,14 @@ into what other factors may influence two specific countries and why their HDI/C
             tags$div(
               tags$h4(
                 tags$strong("Critical Question :")),
-              tags$p("question here"),
+              tags$p("Of the countries whose CO2 emissions dropped from 1990 to 2014, what percentage
+                     of countries experienced an increase in HDI? What percentage experienced a 
+                     decrease in HDI? How did their HDI values change?"),
                 tags$h4(
               tags$strong("Why Ask? :")),
-                tags$p("why ask this quesiton"),
+                tags$p("This is a question of interest because it can show us the percentage of 
+                       countries that follow the same correlation. Being able to visualize the change
+                       in HDI value on a map or chart will make it easier to make connections."),
               tags$h4(
                 tags$strong("Quantitative Analysis :")),
               tags$p("analyze")     
