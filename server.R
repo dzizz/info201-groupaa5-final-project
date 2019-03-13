@@ -21,8 +21,23 @@ main_server <- function(input, output) {
       mutate(Change.point = cut(
         HDI, breaks = c(0, 0.55, 0.70, 0.80, 1),
         labels = c("Low", "Medium", "High", "Very High")
-      )) %>%
-      filter(Change.point == as.character(input$rico_hdi_levels))
+      )) 
+    
+    get_group <- function(join_co2_hdi, point) {
+      if(point == "Low") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else if (point == "Medium") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else if (point == "High") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else if (point == "Very High") {
+        filter(join_co2_hdi, Change.point == input$rico_hdi_levels)
+      } else {
+        join_co2_hdi
+      }
+    }
+    
+    join_co2_hdi <- get_group(join_co2_hdi, input$rico_hdi_levels)
     
     ggplot(data = join_co2_hdi) +
       geom_point(mapping = aes(y = co2, x = HDI, colour = year)) 

@@ -25,10 +25,10 @@ main_ui <- fluidPage(
                              label = "Select HDI Measurement Ratio:",
                              choices = c(
                                "All" = "all",
-                               "Very High" = "0.8 - 1",
-                               "High" = "0.7 - 0.8",
-                               "Medium" = "0.55 - 0.7",
-                               "Low" = "< 0.55"
+                               "Very High" = "Very High",
+                               "High" = "High",
+                               "Medium" = "Medium",
+                               "Low" = "Low"
                              )
                            ),
                            sliderInput(
