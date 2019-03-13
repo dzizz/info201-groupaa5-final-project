@@ -61,12 +61,10 @@ library("ggplot2")
     world <- map_data("world")
     world_HDI <- world %>% 
       rename(Country = region) %>% 
-      mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
       left_join(plot_HDI_data)
     
     world_CO2 <- world %>% 
       rename(Country = region) %>% 
-      mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
       left_join(plot_CO2_data)
 
 # ARAMIS
