@@ -24,7 +24,25 @@ main_ui <- fluidPage(
               tabPanel("Rico",
                        sidebarLayout(
                          sidebarPanel(
-                           
+                           radioButtons(
+                             inputId = "rico_hdi_levels",
+                             label = "Select HDI Measurement Ratio:",
+                             choices = c(
+                               "All" = "all",
+                               "Very High" = "Very High",
+                               "High" = "High",
+                               "Medium" = "Medium",
+                               "Low" = "Low"
+                             )
+                           ),
+                           sliderInput(
+                             inputId = "rico_year",
+                             label = "Select Year:",
+                             min = 1990,
+                             max = 2014,
+                             value = 2014,
+                             step = 5
+                           )
                          ),
                          mainPanel(
                            tabsetPanel(type = "tabs",
