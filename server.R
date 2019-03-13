@@ -43,7 +43,15 @@ main_server <- function(input, output) {
   output$kaylaHDIMap <- renderPlot({
     plot_data <- world_HDI
     
-    #widget code here
+    if (input$HDI_countries != "Select country...") {
+      plot_data <- plot_data %>% 
+        filter(Country == input$HDI_countries)
+    }
+    
+    if (input$yearsHDI != "Select year...") {
+      plot_data <- plot_data %>% 
+        filter(Year == input$yearsHDI)
+    }
     
     # Map visualization 
     ggplot(data = plot_data) +
@@ -53,7 +61,6 @@ main_server <- function(input, output) {
         size = .1
       ) +
       coord_map() +
-      scale_color_continuous(low = "black", high = "red" ,na.value = "grey50") +
       labs(
         title = "HDI Levels",
         fill = "Values"
@@ -63,7 +70,15 @@ main_server <- function(input, output) {
   output$kaylaCO2Map <- renderPlot({
     plot_data <- world_CO2
     
-    #widget code here
+    if (input$CO2_countries != "Select country...") {
+      plot_data <- plot_data %>% 
+        filter(Country == input$CO2_countries)
+    }
+    
+    if (input$yearsCO2 != "Select year...") {
+      plot_data <- plot_data %>% 
+        filter(Year == input$yearsCO2)
+    }
     
     # Map visualization 
     ggplot(data = plot_data) +
