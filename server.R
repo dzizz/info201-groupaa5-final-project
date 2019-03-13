@@ -128,7 +128,6 @@ main_server <- function(input, output) {
       geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
       scale_y_continuous(name = "CO2", breaks = c(4.0, 4.2, 4.4, 4.6, 4.8, 5.0))
   })
-}
 
   # Julias work
     
@@ -139,3 +138,4 @@ main_server <- function(input, output) {
       labs(fill = "HDI Increase", x = "Longitude", y = "Latitude") +
       scale_fill_brewer(palette = "Reds")
   })
+}
