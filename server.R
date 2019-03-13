@@ -27,13 +27,6 @@ main_server <- function(input, output) {
   })
   
   output$rico_plot <- renderPlot({
-    join_co2_hdi <- left_join(co2_data, hdi_data, by = "Country") %>%
-      select(-rank_2017.x, -rank_2017.y) %>%
-      gather(key = co2_hdi, value = value, -Country) %>%
-      mutate(
-        year = as.numeric(substr(co2_hdi, nchar(co2_hdi) - 3, nchar(co2_hdi))),
-        co2_hdi = substr(co2_hdi, 1, nchar(co2_hdi) - 5)
-      ) 
     join_co2_hdi <- na.omit(join_co2_hdi) %>%
       spread(key = co2_hdi, value = value) %>%
       filter(year == input$rico_year) %>%
@@ -118,8 +111,8 @@ main_server <- function(input, output) {
   
   #Create Dillon Zizza's planned visualization
   #Generate two plots - One for CO2, one for HDI, using the previously created data frames with the desired countries
-  #These data sets need to be scaled to one another, so that the maximum value of HDI (1) is roughly the same height as the maximum value of CO2 (45.4)
-  #scale_y_continuous is used to draw the second axis on the righthand side demonstrating HDI values
+  #Use scale_y_continuous to make sure the bounds and breaks for the plots look good and are easily readable
+  
   output$dzizza_hdi <- renderPlot({
     ggplot(data = dzizza_hdi) +
       geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +

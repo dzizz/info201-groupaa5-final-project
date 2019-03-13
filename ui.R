@@ -47,7 +47,39 @@ main_ui <- fluidPage(
                          ),
                          mainPanel(
                            tabsetPanel(type = "tabs",
-                                       tabPanel("Description"),
+                                       tabPanel("Description",
+                                                tags$div(
+                                                  tags$h4(
+                                                    tags$strong("The Question:")),
+                                                  tags$p("What is the relationship between a highly 
+developed nation and their CO2 emissions? Does CO2 emissions increase or decrease when a nation is 
+more developed? For instance, compare the CO2 emissions of a country with a high HDI with one of low HDI."),
+                                                  tags$h4(
+                                                    tags$strong("Relavence/Interest:")),
+                                                  tags$p("This is a question of interest because it 
+can tell us if there is a positive or negative correlation between the quality of life of a country 
+and the amount of co2 it releases per capita. The data set can allow us to join our data sets together 
+and compare these values for a particular year next to each other."),
+                                                  tags$h4(
+                                                    tags$strong("Quantitative Analysis:")),
+                                                  tags$p("When comparing the very high HDI values with 
+their CO2 emission values, you can automatically notice that the many of these countries have a higher
+rate of CO2 emissions. When looking at all countries, you can a curve in the scatter plot, you see an 
+increase in CO2 emissions as HDI values go up."),
+                                                  tags$p("However, when looking at all the countries, 
+it is easy to notice that there are many outliers in some of the countries with the highest Human
+Devlopment Index. Some reasoning for this could be how much later they began modernizing their nation
+and their overall population."),
+                                                  tags$p("When looking at the medium and high HDI
+plots you can also see some countries with very high CO2 emissions, meaning that a high HDI value does
+not mean a high CO2 emissions in all cases. The question to be asked with this data are: is there also 
+a correlation with population, hdi and co2 emissions? How can one fix the industralization and 
+modernization of one country to lower their CO2 emissions?"),
+                                                  tags$p("One last thing to pay attention is to the minor
+drop in CO2 emissions you can see from 2010 to 2014 when looking at all the nations with eaither high or 
+very high HDI values. Will this drop continue as major nations slowly progress to decrease their CO2
+emissions? Will this pave a way for other nations modernizing to follow in their footsteps?"))
+                                       ),
                                        tabPanel("Plot",
                                                 plotOutput("rico_plot"))
                            )
