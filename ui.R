@@ -258,11 +258,19 @@ into what other factors may influence specific countries and why their HDI/CO2 e
       tabPanel("Julia",
          sidebarLayout(
             sidebarPanel(
+              
               selectInput(
                 inputId = "julia_bin",
                 label = "Select a change in HDI...",
                 choices = c("Change in HDI...", as.character(co2_decrease_and_hdi_df$bin)),
                 selected = "Change in HDI..."
+              ),
+              
+              selectInput(
+                inputId = "julias_country_name",
+                label = "Select a country:",
+                choices = c("Select country...", as.character(co2_decrease_and_hdi_plot$Country)),
+                selected = "Select country..."
               )
       ),
       mainPanel(
@@ -290,6 +298,7 @@ into what other factors may influence specific countries and why their HDI/CO2 e
             
             
             dataTableOutput("julias_country_info"),
+            
             
             plotOutput("julias_change_in_hdi")
           )

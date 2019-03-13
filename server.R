@@ -169,8 +169,14 @@ main_server <- function(input, output) {
   })
   
   output$julias_change_in_hdi <- renderPlot({
-    ggplot(data = co2_decrease_and_hdi_plot) + 
-      geom_point(mapping = aes(x = year, y = hdi_value, color = bin))
+    table_country <- co2_decrease_and_hdi_plot
+    
+    table_country <- table_country %>% 
+      filter(Country == input$julias_country_name)
+    
+    ggplot(data = table_country) + 
+      geom_point(mapping = aes(x = year, y = hdi_value, color = bin)) + 
+      labs(x = "Year", y = "HDI Value", color = "Change in HDI Value", title = "The Change in HDI Values for Countries Whose CO2 Emissions Per Capita Decreased from 1990 to 2014")
     
   })
 
