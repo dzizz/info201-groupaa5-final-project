@@ -222,7 +222,7 @@ as seen on the other visualizations within this report."),
 into what other factors may influence specific countries and why their HDI/CO2 emissions are 
                                                          similar/different."))),
           tabPanel("Maps",
-            plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")
+            plotOutput("kaylaHDIMap"), plotOutput("kaylaCO2Map")
           )
         )
       )
