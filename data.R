@@ -28,6 +28,10 @@ library("ggplot2")
     hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
     co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
     
+    # World Map
+    world <- map_data("world")
+    
+    
     
 # DILLON
     
@@ -42,7 +46,6 @@ library("ggplot2")
     colnames <- colnames(co2_data)
     colnames <- colnames[3:11]
     yearsCO2 <- as.character(substr(colnames, 5, nchar(colnames)))
-    
     
     plot_HDI_data <- hdi_data %>% 
       mutate(Country.Code = iso.alpha(hdi_data$Country, n = 3))
@@ -74,7 +77,7 @@ library("ggplot2")
     plot_CO2_data$rank_2017 <- NULL
     
     # World map data to visualize
-    world <- map_data("world")
+
     world_HDI <- world %>% 
       rename(Country = region) %>% 
       mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
@@ -108,11 +111,12 @@ library("ggplot2")
     co2_decrease_and_hdi_df <- left_join(co2_decrease_countries, hdi_1990_to_2014, by = c("Country")) %>% 
       na.omit(co2_decrease_and_hdi_df$change_hdi)
     
-   
+   ###########
     
     co2_decrease_and_hdi_df <- co2_decrease_and_hdi_df %>% 
       mutate(Country.Code = iso.alpha(co2_decrease_and_hdi_df$Country[1:43], n = 3))
     
-    
+    world_map <- world %>% 
+      mutate(Country.Code = iso.alpha(world$region, n = 3))
     
     
