@@ -24,6 +24,11 @@ library("ggplot2")
     # Produces a summary of descriptive statistics of each year in the 'co2_data' data frame
     co2_summary <- as.data.frame(do.call(cbind, lapply(co2_data[3:11], summary)))   
     
+    # Removes space in 'Country' column
+    hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
+    co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
+    
+    
 # DILLON
     #Create new HDI and CO2 data frames containing only the years for both and with a new global average column
     dzizza_hdi <- hdi_data %>% select(Country, HDI_1990, HDI_1995, HDI_2000, HDI_2005, HDI_2010:HDI_2014)
@@ -53,8 +58,6 @@ library("ggplot2")
     colnames <- colnames[3:11]
     yearsCO2 <- as.character(substr(colnames, 5, nchar(colnames)))
     
-    hdi_data$Country <- substr(hdi_data$Country, 2, nchar(hdi_data$Country))
-    co2_data$Country <- substr(co2_data$Country, 2, nchar(co2_data$Country))
     
     plot_HDI_data <- hdi_data %>% 
       mutate(Country.Code = iso.alpha(hdi_data$Country, n = 3))
