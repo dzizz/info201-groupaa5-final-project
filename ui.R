@@ -36,6 +36,7 @@ poorer countries to increase their quality of life. If Norway is bad, it may giv
 perhaps prompting questions reevaluating what we value as a society and how we go about achieving a high 
                   quality of life.")
       )),
+    tags$br(),
 
     column(12, 
       tabsetPanel(type = "tabs",
