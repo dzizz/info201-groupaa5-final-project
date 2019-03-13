@@ -77,9 +77,7 @@ perhaps prompting questions reevaluating what we value as a society and how we g
               tags$h4(
                 tags$strong("Critical Question:")),
               
-                tags$p("What is the relationship between a highly 
->>>>>>> rico_branch
-developed nation and their CO2 emissions? Does CO2 emissions increase or decrease when a nation is 
+                tags$p("What is the relationship between a highly developed nation and their CO2 emissions? Does CO2 emissions increase or decrease when a nation is 
 more developed? For instance, compare the CO2 emissions of a country with a high HDI with one of low HDI."),
               
                 tags$h4(
@@ -185,40 +183,52 @@ that is, what factors may influence this?"),
               tags$p("This is a question of interest because we 
 can compare and contrast countries and determine why they might be different or similar. 
 By arranging the data from highest HDI or highest CO2 or by lowest HDI or lowest CO2 on a map, 
-we can view which countries are most alike or unalike. WHO WOULD WANT THIS INFORMATION, WHY, AND
-                     FOR WHAT"),
+we can view which countries are most alike or unalike. Then, we can wonder what sorts of factors 
+cause certain countries to be similar or different. Some factors may include, wealth, population,
+number of cities, industries, laws, culture, etc."),
+              
+              tags$p("Scientists could potentially want this
+information to determine what factors cause high CO2 emission levels in certain countries. 
+They could potentially see the similarities between certain countries high/low HDI values and CO2 
+emission values. This would allow scientists to dive 
+deeper into this relationships and find even more specific factors, for example, high HDI is an
+indication of happiness levels among the population, which can mean there are large industries and 
+cities within the country. This could potentially mean that due to the large amount of human activity
+and machinery, the CO2 emissions are very high. By determining information like this, 
+scientists would be able to tell the public what sorts of factors are causing/aiding in 
+high CO2 emission values and what we can do to reduce it."),
               
               tags$h4(
-                tags$strong("Quantitative Analysis :")),
+                tags$strong("Quantitative Analysis:")),
               
-              tags$p("By ordering the joined data with the HDI 
-and CO2 emission values from 2014, we can see which countries are the most similar in terms of HDI 
-and CO2 emission values. Looking at the data ordered by CO2 emissions from largest to smallest, we 
-can see that the top two countries in terms of largest CO2 emissions are Qatar and Trinidad and 
-Tobago. Additionally, the most similar countries in terms of largest HDI values are Norway and 
-Switzerland. On the flip side, when looking that countries that have the lowest CO2 emission and 
-HDI values, we can see that there are multiple countries that have the same values, in addition to 
-many other countries having the same values throughout the data."),
+              tags$p("By comparing the HDI 
+and CO2 emission values in each country, we can see which countries are the most similar in terms of HDI 
+and CO2 emission values. Looking at the map data, we can see that there does appear to 
+be a slight correlation in HDI and CO2 levels. For example, looking at Adorra's CO2 and HDI levels 
+in 2014 for example, the HDI and CO2 values are both quite high, as seen by the hue on the map. Also,
+by selecting the country and year specifically, we can see the values. This could potentially suggest that
+the happier people are the more CO2 emissions are produced. On the other hand, looking at 
+Afghanistan's CO2 and HDI levels in 2014, we see that the values are very low. We could speculate
+that this might be due to the War in Afghanistan, which caused many people to lose their homes and
+loved ones - which is why the HDI value is so low. In relation to CO2 emissions, the HDI 
+levels could also suggest that industries slowed down or that there is less civilization."),
               
-              tags$p("Also, by having ordered data, we can 
-further compare data by seeing the highest and lowest values for HDI and CO2 emission values. The 
-two countries that have the largest difference between them in terms of CO2 emission values are 
-Qatar and Burundi. The two countries that have the largest difference between them in terms of HDI 
-                      values are Norway and Marshall Islands."),
+              tags$p("From the map alone, we cannot see any
+outstanding outliers. Outliers are more clearly seen through scatter plots or bar graphs, 
+as seen on the other visualizations within this report."),
               
               tags$p("Based on this data, we can further look 
-into what other factors may influence two specific countries and why their HDI/CO2 emissions are 
+into what other factors may influence specific countries and why their HDI/CO2 emissions are 
                                                          similar/different."))),
-          
-          tabPanel("Plot",
+          tabPanel("Maps",
             plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")
           )
         )
       )
-  )),
-  tabPanel("Julia",
-    sidebarLayout(
-      sidebarPanel(
+   )),
+      tabPanel("Julia",
+         sidebarLayout(
+            sidebarPanel(
       ),
       mainPanel(
         tabsetPanel(type = "tabs",
@@ -237,14 +247,15 @@ into what other factors may influence two specific countries and why their HDI/C
               tags$h4(
                 tags$strong("Quantitative Analysis :")),
               tags$p("analyze")     
-          )
-      ),
+            )
+          ),
+          
           tabPanel("Plot",
             plotOutput("julias_map")
           )
         )
       )
     ))
-  )
+)
 
 
