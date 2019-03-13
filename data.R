@@ -92,7 +92,6 @@ library("ggplot2")
     plot_CO2_data$rank_2017 <- NULL
     
     # World map data to visualize
-
     world_HDI <- world %>% 
       rename(Country = region) %>% 
       mutate(Country.Code = iso.alpha(world$region, n = 3)) %>% 
