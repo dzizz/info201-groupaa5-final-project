@@ -1,5 +1,6 @@
 #Import the needed libraries
 library("shiny")
+library("leaflet")
 
 #Create the main user interface using a fluidPage
 main_ui <- navbarPage("HDI vs CO2",
@@ -35,14 +36,9 @@ environmental impact of increading human development. If Norway is good, then it
 poorer countries to increase their quality of life. If Norway is bad, it may give pause to the pursuit of modernization,
 perhaps prompting questions reevaluating what we value as a society and how we go about achieving a high 
                   quality of life.")
-<<<<<<< HEAD
-      ),
-      tags$div(img("Image of carbon emission", src = 'https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjWuYCA2P7gAhU1GDQIHeaVAgAQjRx6BAgBEAU&url=https%3A%2F%2Fwww.huffingtonpost.com%2Fentry%2Fcutting-carbon-emissions-could-save-175000-lives_us_56cc91bfe4b0928f5a6d52a1&psig=AOvVaw2xA6NLYgtEKy6NsSo8gLnO&ust=1552551660831591'))
-      ),
-=======
       )),
     tags$br(),
->>>>>>> b6383580be832499ebdfe3fff3dce5f9465202bc
+
 
     column(12, 
       tabsetPanel(type = "tabs",
@@ -262,6 +258,12 @@ into what other factors may influence specific countries and why their HDI/CO2 e
       tabPanel("Julia",
          sidebarLayout(
             sidebarPanel(
+              selectInput(
+                inputId = "julia_bin",
+                label = "Select a change in HDI...",
+                choices = c("Change in HDI...", as.character(co2_decrease_and_hdi_df$bin)),
+                selected = "Change in HDI..."
+              )
       ),
       mainPanel(
         tabsetPanel(type = "tabs",
@@ -284,7 +286,12 @@ into what other factors may influence specific countries and why their HDI/CO2 e
           ),
           
           tabPanel("Plot",
-            plotOutput("julias_map")
+            plotOutput("julias_map"), 
+            
+            
+            dataTableOutput("julias_country_info"),
+            
+            plotOutput("julias_change_in_hdi")
           )
         )
       )

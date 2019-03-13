@@ -144,17 +144,34 @@ main_server <- function(input, output) {
     ggplot(data = world_co2_decrease_and_hdi_df) + 
       geom_polygon(mapping = aes(x = long, y = lat, group = group, fill = bin), color = "black", size = .1) +
       coord_map(xlim = c(-180,180), ylim = c(-60, 90)) +
-      labs(fill = "Change In HDI", x = "Longitude", y = "Latitude") +
+      labs(fill = "Change In HDI", x = "Longitude", y = "Latitude", title = "Change in HDI from 1990 to 2014 For Countries Whose CO2 Emissions Per Capita have Decreased from 1990 to 2014") +
       scale_fill_brewer(palette = "Greens") +
       theme(
         panel.background = element_rect(fill = "lightblue",
-                                        colour = "lightblue",
+                                        #color = "lightblue",
                                         size = 0.5, linetype = "solid"),
         panel.grid.major = element_line(size = 0.5, linetype = 'solid',
                                         colour = "white"), 
         panel.grid.minor = element_line(size = 0.25, linetype = 'solid',
                                         colour = "white")
       )
+  })
+  
+  output$julias_country_info <- renderDataTable({
+    table <- co2_decrease_and_hdi_df
+    
+    table <- table %>% 
+      filter(bin == input$julia_bin) %>% 
+      select(-c("bin", "Country.Code"))
+    
+    datatable(table)
+    
+  })
+  
+  output$julias_change_in_hdi <- renderPlot({
+    ggplot(data = co2_decrease_and_hdi_plot) + 
+      geom_point(mapping = aes(x = year, y = hdi_value, color = bin))
+    
   })
 
 }
