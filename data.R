@@ -153,8 +153,7 @@ library("ggplot2")
     # Different categories for changes in HDI
     
     world_co2_decrease_and_hdi_df <- mutate(world_co2_decrease_and_hdi_df, bin = cut(world_co2_decrease_and_hdi_df$change_in_hdi, breaks = c(-0.999, 0.050, 0.100, 0.150, 0.200), labels = c("0.000 - 0.050", "0.051 - 0.100", "0.101 - 0.150", "0.151 - 0.200")))
-    
-    # Creating visualizations
+ 
     
    
     

@@ -215,16 +215,15 @@ as seen on the other visualizations within this report."),
                 tags$p("Based on this data, we can further look 
 into what other factors may influence specific countries and why their HDI/CO2 emissions are 
                                                          similar/different."))),
-                tabPanel("Maps",
-                   plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")
-                )
-              )
-            )
-          )),
+      tabPanel("Maps",
+         plotOutput("kaylaCO2Map"), plotOutput("kaylaHDIMap")
+      )
+    )
+   )
+   )),
       tabPanel("Julia",
          sidebarLayout(
             sidebarPanel(
-                           
       ),
       mainPanel(
         tabsetPanel(type = "tabs",
@@ -248,5 +247,4 @@ into what other factors may influence specific countries and why their HDI/CO2 e
     ))
   )
 )
-
 
