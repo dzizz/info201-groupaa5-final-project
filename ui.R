@@ -258,6 +258,11 @@ into what other factors may influence specific countries and why their HDI/CO2 e
       tabPanel("Julia",
          sidebarLayout(
             sidebarPanel(
+              tags$div(
+                tags$h4(
+                  tags$strong( "For Table:")
+                )
+              ),
               
               selectInput(
                 inputId = "julia_bin",
@@ -266,6 +271,11 @@ into what other factors may influence specific countries and why their HDI/CO2 e
                 selected = "Change in HDI..."
               ),
               
+              tags$div(
+                tags$h4(
+                  tags$strong( "For Plot:")
+                )
+              ),
               selectInput(
                 inputId = "julias_country_name",
                 label = "Select a country:",
@@ -279,27 +289,46 @@ into what other factors may influence specific countries and why their HDI/CO2 e
             tags$div(
               tags$h4(
                 tags$strong("Critical Question :")),
-              tags$p("Of the countries whose CO2 emissions dropped from 1990 to 2014, what percentage
-                     of countries experienced an increase in HDI? What percentage experienced a 
-                     decrease in HDI? How did their HDI values change?"),
+                  tags$p("Of the countries whose CO2 emissions dropped from 1990 to 2014, what
+                         countries experienced an increase in HDI? What countries experienced a 
+                         decrease in HDI? How did their HDI values change? How did their CO2 values change?
+                         What connections can be made between the decrease in amount of co2 emissions per 
+                         capita and the increase in HDI value?"),
+              
                 tags$h4(
-              tags$strong("Why Ask? :")),
-                tags$p("This is a question of interest because it can show us the percentage of 
-                       countries that follow the same correlation. Being able to visualize the change
-                       in HDI value on a map or chart will make it easier to make connections."),
+                  tags$strong("Why Ask? :")),
+                    tags$p("This is a question of interest because it can give us an idea of how many
+                           countries follow the same correlation. Being able to visualize the change
+                           in HDI value on a map or plot will makes it easier to view and make connections. 
+                           We can look to see if there are specific relationships between the changes in CO2
+                           values and the changes in HDI values. We can use this information to ask more 
+                           questions about specific countries and other external explanations for the change
+                           in their values."),
+              
               tags$h4(
                 tags$strong("Quantitative Analysis :")),
-              tags$p("analyze")     
+                  tags$p("analyze")     
             )
           ),
           
           tabPanel("Plot",
+            tags$div(
+              tags$h4(
+                tags$strong( "Map")
+              )
+            ),
             plotOutput("julias_map"), 
-            
-            
+            tags$div(
+              tags$h4(
+                tags$strong( "Table")
+              )
+            ),
             dataTableOutput("julias_country_info"),
-            
-            
+            tags$div(
+              tags$h4(
+                tags$strong( "Plot")
+              )
+            ),
             plotOutput("julias_change_in_hdi")
           )
         )
