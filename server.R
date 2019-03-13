@@ -2,10 +2,7 @@
 library("shiny")
 library("dplyr")
 library("ggplot2")
-<<<<<<< HEAD
-=======
 library("tidyr")
->>>>>>> 00b7db3b6ac7917c3e7272142064d510a3599ea1
 source("data.R")
 
 #Create the server
