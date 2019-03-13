@@ -127,7 +127,8 @@ main_server <- function(input, output) {
     if(input$dzizza_HDI_CO2 == "HDI") {
       ggplot(data = eval(parse(text = paste0(input$dzizza_HDI_category, "_hdi")))) +
         geom_col(mapping = aes(x = as.factor(Year), y = HDI)) +
-        scale_y_continuous(name = "Human Development Index", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1))
+        scale_y_continuous(name = "Human Development Index", limits = c(0, 1), breaks = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1)) +
+        labs(Title = "Human Development Index values over Time")
     } else {
       ggplot(data = eval(parse(text = paste0(input$dzizza_HDI_category, "_co2")))) +
         geom_col(mapping = aes(x = as.factor(Year), y = CO2)) +
